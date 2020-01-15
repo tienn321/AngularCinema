@@ -1,0 +1,9 @@
+<div *ngIf="!seatInput.daDat" 
+[ngClass]="{'seat_vip':seatInput.loaiGhe === 'Vip', 'seat_selected':seatStatus}"
+(click)='chooseSeat()'
+role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell btn_seat">{{seatInput.stt}}</div>
+
+<div *ngIf="seatInput.daDat" disabled
+role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell btn_seat seat_sold">{{seatInput.stt}}</div>
+<!-- <button class="btn btn_seat">1</button> -->
+	<br *ngIf='(i+1)%16 == 0'/>

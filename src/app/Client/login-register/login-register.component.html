@@ -1,0 +1,78 @@
+
+<div class="modal video-modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="false" >
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					Log in to continue booking
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span></button>						
+				</div>
+				<section>
+					<div class="modal-body">
+						<div class="w3_login_module">
+							<div class="module form-module">
+
+							  <a class="toggle" (click)='switchLogin()'>
+									<i class="fa fa-times fa-pencil"></i>
+									<div *ngIf='!isRegistering;else callLogin' class="tooltip">REGISTER</div>
+									<ng-template #callLogin>
+										<div class="tooltip login-tooltip">LOGIN</div>
+										</ng-template>
+								</a>
+
+								<!-- form login ở đây -->
+							  <div class="form" style="display: block;" *ngIf='!isRegistering'>
+									<h3>Your account</h3>
+									<form #frmLogin="ngForm" (ngSubmit)="login(frmLogin.value)" >
+
+									<input minlength="6" maxlength="32" type="text" placeholder="Username" required name="taiKhoan" #taiKhoan='ngModel' ngModel/>
+									
+									<div *ngIf="(taiKhoan.dirty || taiKhoan.touched) && taiKhoan.errors">
+										<!--Nếu div xuất hiện => bị lỗi => bắt xem lỗi rổng-->
+										<div *ngIf="taiKhoan.errors.required">
+												Tài khoản không được bỏ trống !
+										</div>
+										<div *ngIf="taiKhoan.errors.minlength || taiKhoan.errors.maxlength">
+												Tài khoản từ 6 - 32 ký tự 
+										</div>
+									</div>
+
+									<input type="password" placeholder="Password here" required name="matKhau" #matKhau='ngModel' ngModel>
+									
+									<div *ngIf="(matKhau.touched || matKhau.dirty) && matKhau.errors">
+										<div class="alert alert-danger" *ngIf="matKhau.errors.required">
+												Email không được rổng
+										</div>
+									</div>
+								  <input [disabled]="frmLogin.invalid || frmLogin.submitted" type="submit" value="Login">
+								</form>
+								</div>
+								
+								<!-- form đăng ký ở đây -->
+							  <div class="form" style="display: block;" *ngIf='isRegistering'>
+								<h3>Create an account</h3>
+								<form action="#" method="post"
+								#frmRegister="ngForm"
+								(ngSubmit)="register(frmRegister.value)">
+									
+								<input type="text" name="hoTen" placeholder="Your Name" required name="hoTen" #hoTen='ngModel' ngModel >
+
+								  <input minlength="4" maxlength="32" type="text" placeholder="Username" required name="taiKhoan" #taiKhoan='ngModel' ngModel>
+									
+									<input type="password" placeholder="Password" required name="matKhau" #matKhau='ngModel' ngModel>
+									
+									<input type="email" placeholder="Email Address" required name="email" #email='ngModel' ngModel>
+									
+									<input type="text" name="soDt" placeholder="Phone Number" required name="soDt" #soDt='ngModel' ngModel >
+
+									<input type="submit" value="Register">
+								</form>
+							  </div>
+							  <!-- <div class="cta"><a href="#">Forgot your password?</a></div> -->
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>

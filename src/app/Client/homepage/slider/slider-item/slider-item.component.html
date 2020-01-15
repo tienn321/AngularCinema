@@ -1,0 +1,22 @@
+<li style="height: 100px;" 
+  [ngClass]="{'slidey-active':indexInput === activeItem}">
+          <table class="slidey-list-table">
+            
+            <tbody style="cursor: pointer;" routerLink='/detail/{{filmInput.maPhim}}'>
+              <tr>
+                <td rowspan="2" class="slidey-list-thumbnail-container">
+                  <div class="slidey-list-thumbnail slider_thumbnail">
+                  <img [src]='filmInput.hinhAnh'/>
+                  </div>
+                </td>
+                <td class="slidey-list-title">{{filmInput.tenPhim}}</td>
+              </tr>
+
+              <tr>
+                <td class="slidey-list-description" style="width: 216px; height: 81px; display: block; overflow-wrap: break-word;"> {{filmInput.moTa}}
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </li>

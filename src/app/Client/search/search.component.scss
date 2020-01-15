@@ -1,0 +1,45 @@
+.pagination{
+  display: block;
+  text-align: center;
+}
+
+.searchresult_title{
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+
+
+.searchresult_block{
+  margin: 20px 0;
+  
+  .searchresult_detail {
+    .searchresult_tenphim{
+      margin: 15px 0;
+      font-size: 30px;
+    }
+    button{
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #FF8D1B;
+    text-align: center;
+    padding: 5px 10px;
+    position: absolute;
+    right: 10%;
+    margin-top: 20px;
+    &:hover{
+      background: #212121
+    }
+    &:focus{
+      outline: none;
+    }
+    }
+  }
+}
+
+@media screen and (max-width:992px) {
+  .single-right{
+    display: none;
+  }
+}

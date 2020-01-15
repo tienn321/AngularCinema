@@ -1,0 +1,53 @@
+<div class="bs-example bs-example-tabs row filmshowtimes_tab" role="tabpanel" data-example-id="togglable-tabs">
+    <ul id="myTab" 
+    class="nav nav-pills nav-stacked col-md-3 " 
+    role="tablist">
+
+      <li role="presentation" 
+      [ngClass]="{'active':index === 0}" 
+      *ngFor='let cine of filmDetailInput.heThongRapChieu;let index=index' >
+        <a href="#{{cine.maHeThongRap}}" 
+        id="{{cine.maHeThongRap}}-tab" 
+        role="tab" 
+        data-toggle="tab" 
+        aria-expanded="false"
+        class="filmshowtimes_cine">
+          {{cine.tenHeThongRap}}         
+        </a>
+      </li>
+    </ul>
+
+    <!-- danh sách cụm rạp ở đây -->
+    <div id="myTabContent" class="tab-content col-md-9" >
+
+      <div role="tabpanel" class="tab-pane fade" id="{{cine.maHeThongRap}}" 
+      *ngFor='let cine of filmDetailInput.heThongRapChieu;let i=index'
+      [ngClass]="{'active in':i === 0}"
+       >
+        
+        <div *ngFor='let cineGroup of cine.cumRapChieu'>
+          <!-- <ng-container *ngFor="let cineGroup of cine.cumRapChieu"> -->
+            <p  
+          id="{{cineGroup.maCumRap}}-tab" 
+          role="tab" 
+          data-toggle="tab"  
+          aria-expanded="true"
+          class="filmshowtimes_cineGroup" 
+          >
+          {{cineGroup.tenCumRap}}
+          </p>
+          <div class="filmshowtimes_showtimes">
+            <a *ngFor="let showtime of cineGroup.lichChieuPhim" routerLink='/booking/{{showtime.maLichChieu}}'>
+          {{showtime.ngayChieuGioChieu | date: 'hh:mm'}}
+          </a>
+          </div>
+          
+          <hr/>
+          <!-- </ng-container> -->
+          
+        </div>
+
+      </div>
+
+    </div>
+</div>

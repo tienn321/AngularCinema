@@ -1,0 +1,146 @@
+<!-- header -->
+<div class="header">
+  <div class="container">
+    <div class="w3layouts_logo">
+      <a routerLink="/">
+        <img src="assets/logo_movie.png" class="logo_movie" />
+      </a>
+    </div>
+    <div class="w3_search">
+      <form>
+        <input
+          type="text"
+          name="search"
+          #searchKw
+          placeholder="Search film"
+        />
+        <input type="submit" (click)='SearchFilm(searchKw.value)' value="Search" />
+      </form>
+    </div>
+    <div class="w3l_sign_in_register">
+      <ul>
+        <li><i class="fa fa-phone" aria-hidden="true"></i> (+84)531 321 210</li>
+
+        <li style="cursor: pointer;" *ngIf="userPro5 == null; else helloUser">
+          <a data-toggle="modal" data-target="#myModal">
+            log in
+          </a>
+        </li>
+
+        <ng-template #helloUser> 
+					<div class="dropdown user-pro5">
+						<a class="dropdown-toggle user-ava_dropdown" data-toggle="dropdown">
+							<i class="fa fa-user user-ava"></i>
+							<b class="caret"></b>
+          	</a>
+          <ul class="dropdown-menu">
+						<li class="user-name_dropdown">Hi, {{userPro5.taiKhoan}}</li>
+						<li ><a style="cursor: pointer;" (click)='LogOut()'>Log out</a></li>
+
+          </ul>
+					</div>
+          
+        </ng-template>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<!-- MENU CHÍNH -->
+<div class="movies_nav my_nav">
+  <div class="container">
+    <!-- <nav class="navbar-default"> -->
+    <div class="navbar-header navbar-left">
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#bs-example-navbar-collapse-1"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- <div > -->
+
+    <nav class="collapse navbar-collapse navbar-right " id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav nav_phim text-uppercase">
+        <li><a routerLink="/">HOME</a></li>
+        <li><a href="#myCarousel">Now SHOWING</a></li>
+        <li><a href="news.html">NEWS</a></li>
+        <li><a href="short-codes.html">CONTACT US</a></li>
+        <!-- <li><a href="list.html">A - z list</a></li> -->
+      </ul>
+    </nav>
+    <!-- </div> -->
+    <!-- </nav>	 -->
+  </div>
+</div>
+<!-- kết thúc menu -->
+
+<router-outlet></router-outlet>
+
+<!-- FOOTER Ở ĐÂY -->
+<div class="footer">
+  <div class="container">
+    <div class="w3ls_footer_grid">
+      <div class="col-md-6 w3ls_footer_grid_left">
+        <div class="w3ls_footer_grid_left1">
+          <h2>SUBSCRIBE TO US</h2>
+          <div class="w3ls_footer_grid_left1_pos">
+            <form action="#" method="post">
+              <input
+                type="email"
+                name="email"
+                placeholder="Your email here..."
+                required=""
+              />
+              <input type="submit" value="send" />
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 w3ls_footer_grid_right">
+        <a href="index.html">
+          <img src="assets/logo_movie.png" class="logo_movie" />
+        </a>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="col-md-5 w3ls_footer_grid1_left">
+      <p>
+        © 2016 One Movies. All rights reserved | Design by
+        <a href="http://w3layouts.com/">W3layouts</a>
+      </p>
+    </div>
+    <div class="col-md-7 w3ls_footer_grid1_right">
+      <ul>
+        <li>
+          <a>about us</a>
+        </li>
+
+        <li>
+          <a>privacy policy</a>
+        </li>
+
+        <li>
+          <a>FAQ</a>
+        </li>
+        <li>
+          <a>recuitment</a>
+        </li>
+        <li>
+          <a>contact</a>
+        </li>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<!-- MODAL HERE -->
+<app-login-register></app-login-register>

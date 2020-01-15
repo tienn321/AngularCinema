@@ -1,0 +1,68 @@
+<div class="banner-bottom">
+  
+  <div class="container">
+    <div class="w3_agile_banner_bottom_grid">
+			
+			<owl-carousel-o [options]="carouselSlideOptions">
+        <ng-container *ngFor="let film of filmsArr">
+          <ng-template carouselSlide>
+            <div class="item" style="width: 222px;">
+              <div class="w3l-movie-gride-agile w3l-movie-gride-agile1" >
+                <a class="hvr-shutter-out-horizontal" data-toggle="modal" data-target="#myModalTrailer" style="cursor: pointer;" (click)='WatchTrailer(film.trailer)'>
+                  <img
+                    [src]="film.hinhAnh"
+                    title="watch {{film.tenPhim}} trailer"
+                    class="img-responsive filmcarousel_img"
+                    alt="{{film.tenPhim}}"
+                  />
+                  <div class="w3l-action-icon">
+                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                  </div>
+                  
+                </a>
+
+                <div class="mid-1 agileits_w3layouts_mid_1_home">
+                  <div class="w3l-movie-text">
+                    <h6>
+                      <a routerLink='/detail/{{film.maPhim}}'>{{ film.tenPhim }}</a>
+                    </h6>
+                  </div>
+                  <div class="mid-2 agile_mid_2_home">
+                    <p>{{film.ngayKhoiChieu | date: 'dd/MM/yy' }}</p>
+                    <div class="block-stars">
+                      <ul class="w3l-ratings">
+                        <li *ngFor='let start of ratingStars(film.danhGia)'>
+                          <a><i class="fa fa-star" aria-hidden="true"></i></a>
+                        </li>
+                         <!-- <li>
+                          <a><i class="fa fa-star" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                          <a><i class="fa fa-star" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                          <a><i class="fa fa-star" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                          <a><i class="fa fa-star-half-o" aria-hidden="true"></i></a>
+                        </li>  -->
+                      </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+                <div class="ribben">
+                  <p>NEW</p>
+                </div>
+              <button class="btn filmcarousel_getticket" routerLink='/detail/{{film.maPhim}}'>get ticket</button>
+              </div>
+            </div>
+            
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+</div>
+
+<app-modal-trailer [trailerInput]="trailerWatching"></app-modal-trailer>

@@ -1,0 +1,47 @@
+.showtimebycinema {
+  //height: max-content;
+  margin: 50px auto;
+  .bs-example {
+    height: max-content;
+    ul {
+      width: 100px;
+      height: auto;
+      padding-right: 0;
+      border-left: solid 1px #ccc !important;
+      border-right: solid 1px #ccc !important;
+      margin: 0 !important ;
+      
+      li {
+        width: 80px;
+        height: 80px;
+        margin: auto;
+        
+        .showtimes_cinema {
+         
+          width: 100%;
+          height: auto;
+          padding: 5px;
+
+          .cinema_logo {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+    .tab-content {
+    height: inherit;
+    border-right: solid 1px #ccc !important;
+  }
+  }
+  
+  //border: solid 1px #ccc;
+
+  
+}
+@media screen and (max-width:768px) {
+  .showtimebycinema {
+    display: none;
+  }
+}

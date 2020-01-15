@@ -1,0 +1,42 @@
+
+<div class="row">
+<div class="col-md-4 film_thumbnail">
+  <img [src] = 'cardFilm.hinhAnh'/>
+</div>
+<div class="col-md-8">
+  <div class='filmcard_head'>
+    <a class="filmcard_title">{{cardFilm.tenPhim}}</a>
+    <div class="block-stars">
+      <ul class="w3l-ratings">
+        <li *ngFor='let start of ratingStarts(cardFilm.danhGia)'><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <p class="filmcard_desc">Khởi chiếu ngày: <i>{{cardFilm.ngayKhoiChieu | date: 'dd/MM/y'}}</i></p>
+ 
+  
+  <ng-container *ngFor='let filmShowtimes of cardFilm.heThongRapChieu'>
+    <ng-container *ngIf='filmShowtimes.maHeThongRap === cineInput'>
+       <ng-container *ngFor='let filmShowtimes1 of filmShowtimes.cumRapChieu'>
+        <ng-container *ngIf='filmShowtimes1.maCumRap === cineGroupInput'>
+          
+          <div class="filmcard_showtimes">
+            <ng-container *ngFor='let filmShowtimes2 of filmShowtimes1.lichChieuPhim;let i = index'>
+              <button class="btn" *ngIf="i < 6">
+              {{filmShowtimes2.ngayChieuGioChieu | date: 'hh:mm'}}
+              
+              </button>
+            </ng-container>
+            
+          </div>
+
+        </ng-container>
+       </ng-container>
+    </ng-container>
+  </ng-container>
+   
+ 
+</div>
+</div>
+<hr/>

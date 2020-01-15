@@ -1,0 +1,27 @@
+<div id="slidey">
+  <div class="slidey-row row">
+    <div class="slidey-image col-md-4 col-sm-6"
+    [ngStyle]="{ 'background-image': 'url(' + filmHighlighted.hinhAnh + ')', 'background-repeat':'no-repeat','background-position':'25% 75%'}"
+    style="cursor: pointer;" routerLink='/detail/{{filmHighlighted.maPhim}}'
+    >
+
+      <div class="slidey-overlay" style="opacity: 1; display: block;">
+
+        <p class="slidey-overlay-title" style="cursor: pointer;" routerLink='/detail/{{filmHighlighted.maPhim}}'>{{filmHighlighted.tenPhim}}</p>
+        <p class="slidey-overlay-description">{{filmHighlighted.moTa}}</p>
+        <!-- <span class="slidey-progress" style="width: 200px; overflow: hidden;"></span> -->
+      </div>
+
+    </div>
+    <!-- end col-8 -->
+    
+    <div class="slidey-list col-md-4 col-sm-6">
+      <ul>
+        <app-slider-item *ngFor='let film of filmArr; let index=index' [filmInput]='film' [indexInput]='index' (activeTab)='activeFilm($event)'
+        
+        ></app-slider-item>
+
+      </ul>
+    </div>
+  </div>
+</div>

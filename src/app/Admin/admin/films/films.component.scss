@@ -1,0 +1,45 @@
+.film_img{
+  width: 150px;
+  height: 150px;
+  //padding: none !important;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.film_info{
+  //width: 500px;
+  .film_info_title{
+    color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  .film_info_desc{
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+  
+}
+.film_table > .film_info_date{
+    font-size: 1.1rem;
+    width: 300px;
+  }
+
+.film_info_fn i.fa {
+  font-size: 1.8rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+.pagination{
+  display: block;
+  text-align: center;
+  margin: 20px 0 !important;
+}
+
+table th {
+  font-size: 1rem;
+  margin-left: 20px;
+}

@@ -1,0 +1,91 @@
+<div class="container my-4 showtimebycinema">
+  <div class="bs-example bs-example-tabs row" role="tabpanel" data-example-id="togglable-tabs">
+    <ul id="myTab" 
+    class="nav nav-pills nav-stacked col-md-2 col-sm-2" 
+    role="tablist">
+
+      <li role="presentation" 
+      [ngClass]="{'active':index === 0}" 
+      *ngFor='let cine of cinemasArr;let index=index'
+      >
+        <a 
+        href="#{{cine.maHeThongRap}}" 
+        id="{{cine.maHeThongRap}}-tab" 
+        role="tab" 
+        data-toggle="tab" 
+        aria-expanded="false"
+        class="showtimes_cinema">
+          <!-- {{cine.tenHeThongRap}} -->
+          <img class='cinema_logo' [src]='cine.logo'/>
+         <!-- chỗ này để logo làm sao??? -->
+        </a>
+      </li>
+
+      <!-- <li role="presentation" class=""><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">Profile</a></li> -->
+    </ul>
+
+    <!-- danh sách cụm rạp ở đây -->
+    <div id="myTabContent" class="tab-content col-md-4 col-sm-4" >
+
+      <div role="tabpanel" class="tab-pane fade" id="{{cine.maHeThongRap}}" 
+      *ngFor='let cine of cinemaShowtimesArr;let index=index'
+      [ngClass]="{'active in':index === 0}" >
+        
+        <div *ngFor='let cineGroup of cine.lstCumRap'>
+          <a href="#{{cineGroup.maCumRap}}" 
+          id="{{cineGroup.maCumRap}}-tab" 
+          role="tab" 
+          data-toggle="tab"  
+          aria-expanded="true" >
+          {{cineGroup.tenCumRap}}
+          </a>
+          <p>
+            {{cineGroup.diaChi}}
+          </p>
+          <hr/>
+        </div>
+
+      </div>
+
+      <!-- <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+        <p> ĐỂ DÀNH </p>
+      </div> -->
+
+    </div>
+
+
+    <div class="tab-content col-md-6 col-sm-6" >
+
+      <ng-container *ngFor='let cine of cinemaShowtimesArr;let i = index' >
+
+        <div 
+        id={{cine2.maCumRap}}
+        *ngFor='let cine2 of cine.lstCumRap; '
+        role="tabpanel" 
+        class="tab-pane fade"  
+        [ngClass]="{'active in':(i === 0 && cine2.maCumRap === cine.lstCumRap[0].maCumRap)}"
+
+        >
+        
+          <div *ngFor='let phim of cine2.danhSachPhim;let index=index' >
+            <div href="#" 
+
+              id="{{phim.maPhim}}-tab" 
+              role="tab" 
+              data-toggle="tab"  
+              aria-expanded="false" >
+                <app-showtimes-movie [cineInput]='cine.maHeThongRap' [cineGroupInput]='cine2.maCumRap' [filmInput] = 'phim.maPhim'
+                ></app-showtimes-movie>
+            </div>
+          </div>
+
+        </div> 
+
+      </ng-container>
+
+      
+
+    </div>
+  </div>
+
+</div>

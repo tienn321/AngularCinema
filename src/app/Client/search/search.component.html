@@ -1,0 +1,65 @@
+<style>
+  .pagination /deep/ .ngx-pagination .current {
+    background: #FF8D1B;
+  }
+</style>
+<div class="single-page-agile-main">
+  <div class="container">
+    <!-- /w3l-medile-movies-grids -->
+    <div class="single-page-agile-info">
+      <!-- /movie-browse-agile -->
+      <div class="show-top-grids-w3lagile row">
+        <div class="col-sm-8 col-xs-12 single-left">
+          <div class="song">
+            <div class="song-info">
+							<h3 class='searchresult_title'>Your Search Result</h3>
+            </div>
+            <div class="video-grid-single-page-agileits row searchresult_block" *ngFor='let filmresult of filmResultArr'>
+              <div class="col-xs-3">
+                <img [src]='filmresult.hinhAnh'/>
+              </div>
+              <div class="col-xs-9 searchresult_detail">
+                <h4 class="searchresult_tenphim">{{filmresult.tenPhim}}</h4>
+                <p>{{filmresult.moTa}}</p>
+                <button class="btn" routerLink='/detail/{{filmresult.maPhim}}'>More...</button>
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+					
+					
+				</div>
+				
+				
+				
+        <div class="col-sm-4 single-right">
+          <h3>or You may interested</h3>
+          <div class="single-grid-right">
+
+            <div class="single-right-grids" *ngFor='let filmRec of filmRecommendArr | paginate:{itemsPerPage: 3, currentPage:p}'>
+              <div class="col-md-4 single-right-grid-left">
+                <a routerLink="/detail/{{filmRec.maPhim}}">
+                  <img src="{{filmRec.hinhAnh}}" alt=""/>
+                </a>
+              </div>
+              <div class="col-md-8 single-right-grid-right">
+                <a routerLink="/detail/{{filmRec.maPhim}}" class="title"> {{filmRec.tenPhim}}</a>
+                <p class="author"><a class="author">2,200 tickets bought</a></p>
+                <!-- <p class="views">2,114,200 views</p> -->
+              </div>
+							<div class="clearfix"></div>
+							
+						</div>
+						<pagination-controls class="pagination" (pageChange)="p=$event" previousLabel="" nextLabel="" ></pagination-controls>
+
+          </div>
+        </div>
+
+				<div class="clearfix"></div>
+
+				
+			</div>
+			
+

@@ -1,0 +1,22 @@
+.modal-dialog {
+  height: 120vh;
+  width: 80vw;
+  .modal_trailer{
+  background-color: transparent;
+  .modal-header{
+    border-bottom: none;
+    button{
+      color: whitesmoke;
+      font-weight: 300;
+      font-size: 30px;
+      transform: translateY(-10%);
+    }
+  }
+  .modal-body{
+    padding: 0;
+    width:100%;
+    height: auto;
+  }
+}
+}
+

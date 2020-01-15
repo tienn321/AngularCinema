@@ -1,0 +1,23 @@
+.btn_seat{
+  width: 30px;
+  height: 30px;
+  margin: 3px;
+  background-color: #949494;
+  color: white;
+  text-align: center;
+}
+
+.seat_vip{
+  background-color: violet;
+
+}
+
+.seat_sold{
+  cursor: no-drop;
+  background-color: #D00000;
+  color: whitesmoke;
+}
+
+.seat_selected{
+  background-color: #00B70C;
+}

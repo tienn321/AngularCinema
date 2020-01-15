@@ -1,0 +1,86 @@
+<style>
+  
+  .pagination /deep/ .ngx-pagination .current {
+    background: #FF8D1B;
+    } 
+      
+</style>
+<div class="single-page-agile-main">
+  <div class="container">
+    <!-- /w3l-medile-movies-grids -->
+    <div class="single-page-agile-info">
+      <!-- /movie-browse-agile -->
+      <div class="show-top-grids-w3lagile row">
+        <div class="col-sm-8 col-xs-12 single-left">
+          <div class="song">
+            <div class="song-info">
+							<h3 class='phimchitiet_tieude'>{{filmDetail.tenPhim}}</h3>
+							<h4>Premiere date:  <i style="color: #999999;">{{filmDetail.ngayKhoiChieu | date: 'dd/MM/y'}}</i></h4>
+            </div>
+            <div class="video-grid-single-page-agileits">
+              <div data-video="dLmKio67pVQ" id="video">
+               <!-- <img
+                  [src]="filmDetail.hinhAnh"
+                  class="img-responsive" style="display: none;"
+                />
+                 <div
+                  id="play"
+                  style='background-image: url("play-button.png"), url("images/5.jpg"); 
+                  display: none;'
+                ></div> -->
+                <iframe
+                  id="player"
+                  [src]="sanitizer.bypassSecurityTrustResourceUrl(filmDetail.trailer)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                  width="800"
+                  height="500"
+                  seamless="seamless"
+                  style="border: none;"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <!-- mô tả phim ở đây -->
+          <p class='phimchitiet_mota'>{{filmDetail.moTa}}</p>
+          <!-- <div class='phimchitiet_muave'>
+            <h3>Premiere date:  <i style="color: #999999;">{{filmDetail.ngayKhoiChieu | date: 'dd/MM/y'}}</i></h3>
+            <button class="btn">get ticket</button>
+					</div> -->
+					
+					<app-film-showtimes [filmDetailInput]='filmDetail'></app-film-showtimes>
+				</div>
+				
+				
+				
+        <div class="col-sm-4 single-right">
+          <h3>You may interested</h3>
+          <div class="single-grid-right">
+
+            <div class="single-right-grids" *ngFor='let filmRec of filmRecommendArr | paginate:{itemsPerPage: 6, currentPage:p}'>
+              <div class="col-md-4 single-right-grid-left">
+                <a routerLink="/detail/{{filmRec.maPhim}}">
+                  <img src="{{filmRec.hinhAnh}}" alt=""/>
+                </a>
+              </div>
+              <div class="col-md-8 single-right-grid-right">
+                <a routerLink="/detail/{{filmRec.maPhim}}" class="title"> {{filmRec.tenPhim}}</a>
+                <p class="author"><a class="author">2,200 tickets bought</a></p>
+                <!-- <p class="views">2,114,200 views</p> -->
+              </div>
+							<div class="clearfix"></div>
+							
+						</div>
+						<pagination-controls class="pagination" (pageChange)="p=$event" previousLabel="" nextLabel="" ></pagination-controls>
+
+          </div>
+        </div>
+
+				<div class="clearfix"></div>
+
+				<h4 class=" w3_latest_text filmdetail_ref">just comming</h4>
+				<app-carousel-film></app-carousel-film>
+			</div>
+			
+
