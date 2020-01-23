@@ -32,7 +32,16 @@ export const api = {
 
   userManagement: {
     userLogin: domain + '/QuanLyNguoiDung/DangNhap',
+
     userRegister: domain + '/QuanLyNguoiDung/DangKy',
+
+    getUserTypes: domain + '/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung',
+
+    findUser: (tuKhoa: string) => domain + '/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=' + local.groupID + `&tuKhoa=${tuKhoa}`,
+
+    deleteUser: (taiKhoan: string) => domain + `/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+
+    updateUser: domain + "/QuanLyNguoiDung/CapNhatThongTinNguoiDung"
   }
 
 }

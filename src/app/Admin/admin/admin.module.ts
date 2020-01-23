@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgxPaginationModule } from "ngx-pagination";
 import { EditFilmComponent } from './films/edit-film/edit-film.component';
+import { ModalUserComponent } from './users/modal-user/modal-user.component';
 
 const adminRoutes: Routes = [
   {
@@ -23,7 +24,7 @@ const adminRoutes: Routes = [
 ]
 
 @NgModule({
-  declarations: [AdminComponent, UsersComponent, FilmsComponent, DashboardComponent, EditFilmComponent],
+  declarations: [AdminComponent, UsersComponent, FilmsComponent, DashboardComponent, EditFilmComponent, ModalUserComponent],
   imports: [
     CommonModule, RouterModule.forChild(adminRoutes),
     FormsModule, NgxPaginationModule

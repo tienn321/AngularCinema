@@ -45,13 +45,13 @@ $('.toggle').click(function () {
 //bootstrap-pop-up
 
 //đóng lại tạm thời
-// $("#slidey").slidey({
-//   interval: 8000,
-//   listCount: 5,
-//   autoplay: false,
-//   showList: true
-// });
-// $(".slidey-list-description").dotdotdot();
+$("#slidey").slidey({
+  interval: 8000,
+  listCount: 5,
+  autoplay: false,
+  showList: true
+});
+$(".slidey-list-description").dotdotdot();
 //banner
 
 //đóng lại tạm thời

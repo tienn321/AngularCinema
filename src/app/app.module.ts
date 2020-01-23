@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { Page404Component } from './Client/page404/page404.component';
 import { Page403Component } from './Client/page403/page403.component';
 import { ClientLayoutModule } from './Client/client-layout/client-layout.module';
+import { AdminModule } from './Admin/admin/admin.module';
 //import { SearchComponent } from './Client/search/search.component';
 
 
@@ -21,7 +22,7 @@ import { ClientLayoutModule } from './Client/client-layout/client-layout.module'
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule,ClientLayoutModule
+    HttpClientModule,ClientLayoutModule,AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

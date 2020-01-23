@@ -21,4 +21,7 @@ export class UserLoginResult {
   accessToken: string;
   constructor() { }
 }
-
+export class UserTypes { 
+  maLoaiNguoiDung: string;
+  tenLoai: string
+}

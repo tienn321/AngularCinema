@@ -1,6 +1,6 @@
 <style>
   .pagination /deep/ .ngx-pagination li {
-      font-size: 18px;
+      /* font-size: 18px; */
       margin: 0 5px;
   }
   .pagination /deep/ .ngx-pagination .current {
@@ -142,7 +142,9 @@
         
       </table>
       <pagination-controls class="pagination" (pageChange)="p=$event" previousLabel="" nextLabel="" ></pagination-controls>
+      <button data-toggle="modal" data-target="#modalEditFilm">modal</button>
     </div>
 
   </div>
 </div>
+<app-edit-film></app-edit-film>

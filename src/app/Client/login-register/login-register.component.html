@@ -41,7 +41,7 @@
 									
 									<div *ngIf="(matKhau.touched || matKhau.dirty) && matKhau.errors">
 										<div class="alert alert-danger" *ngIf="matKhau.errors.required">
-												Email không được rổng
+												Mật khẩu không được rổng
 										</div>
 									</div>
 								  <input [disabled]="frmLogin.invalid || frmLogin.submitted" type="submit" value="Login">
@@ -64,7 +64,6 @@
 									<input type="email" placeholder="Email Address" required name="email" #email='ngModel' ngModel>
 									
 									<input type="text" name="soDt" placeholder="Phone Number" required name="soDt" #soDt='ngModel' ngModel >
-
 									<input type="submit" value="Register">
 								</form>
 							  </div>

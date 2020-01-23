@@ -1,6 +1,6 @@
-<section id="container admin_body">
+<section id="container">
 <!--header start-->
-<header class="admin_header fixed-top clearfix">
+<header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
     <a href="index.html" class="logo">
@@ -198,7 +198,7 @@
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <img alt="" src="adminVisitors/images/2.png">
+                <img alt="" src="images/2.png">
                 <span class="username">John Doe</span>
                 <b class="caret"></b>
             </a>
@@ -215,43 +215,41 @@
 </div>
 </header>
 <!--header end-->
+
 <!--sidebar start-->
 <aside>
     <div id="sidebar" class="nav-collapse">
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
-
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="active" routerLink='/admin'>
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a routerLink="/admin/films-management">
                         <i class="fa fa-book"></i>
                         <span>Films</span>
                     </a>
                     <ul class="sub">
-                      <li><a routerLink="/admin/films-management">film page</a></li>
-                      <li><a href="glyphicon.html">glyphicon</a></li>
+											<li><a href="typography.html">Typography</a></li>
+											<li><a href="glyphicon.html">glyphicon</a></li>
                       <li><a href="grids.html">Grids</a></li>
                     </ul>
                 </li>
-
                 <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-user"></i>
+                    <a routerLink="/admin/users-management">
+                        <i class="fa fa-th"></i>
                         <span>Users</span>
                     </a>
                     <ul class="sub">
-                        <li><a routerLink="/admin/users-management">user page</a></li>
+                        <li><a href="basic_table.html">Basic Table</a></li>
                         <li><a href="responsive_table.html">Responsive Table</a></li>
                     </ul>
                 </li>
-
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
@@ -307,7 +305,7 @@
                 <li>
                     <a href="login.html">
                         <i class="fa fa-user"></i>
-                        <span>Users</span>
+                        <span>Login Page</span>
                     </a>
                 </li>
             </ul>            </div>
@@ -316,49 +314,22 @@
 </aside>
 <!--sidebar end-->
 <!--main content start-->
+
 <section id="main-content">
-
-	
-
 	<section class="wrapper">
-		<!-- router chuyển trang ở đây -->
+		
+		<!-- router ở đây -->
 		<router-outlet></router-outlet>
-	</section>
 
+</section>
  <!-- footer -->
-		  <div class="admin_footer">
+		  <!-- <div class="footer">
 			<div class="wthree-copyright">
 			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
-            </div>
-            
-
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-		  </div>
+			</div>
+		  </div> -->
   <!-- / footer -->
 </section>
 <!--main content end-->
+
 </section>
-
-
-  

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User, UserLogin, UserLoginResult } from '../Models/User';
+import { User, UserLogin, UserLoginResult, UserTypes } from '../Models/User';
 import { api } from '../Config/ConfigSetting';
 
 @Injectable({
@@ -27,5 +27,35 @@ export class UserService {
     return observable;    
   }
 
+  public getUserTypes(): Observable<UserTypes[]> {
+    let observable: Observable<any> = this._http.get(api.userManagement.getUserTypes)
+    return observable;
+  } 
+  
+  //findUser
+  public findUser(tuKhoa: string): Observable<User[]> {
+    // let header: HttpHeaders = new HttpHeaders(
+    //   { Authorization: 'Bearer ' + localStorage.getItem("accessToken") });
+    // header.set("Content-Type", "application/json; charset=utf-8");
+    let observable: Observable<any> = this._http.get(api.userManagement.findUser(tuKhoa))
+    return observable;
+  } 
+
+  public deleteUser(taiKhoan: string): Observable<any> {
+    //token here
+    let header: HttpHeaders = new HttpHeaders(
+      { Authorization: 'Bearer ' + localStorage.getItem("accessToken") });
+
+    let observable: Observable<any> = this._http.delete(api.userManagement.deleteUser(taiKhoan), { headers: header, responseType: 'text' });
+    return observable;
+  }
+
+  public updateUser(userUpdate:User): Observable<any> {
+    let header: HttpHeaders = new HttpHeaders(
+      { Authorization: 'Bearer ' + localStorage.getItem("accessToken") });
+    
+    let observable: Observable<any> = this._http.put(api.userManagement.updateUser, userUpdate,{ headers: header, responseType: 'text' })
+    return observable;
+  }
 
 }

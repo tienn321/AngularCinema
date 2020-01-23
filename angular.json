@@ -41,12 +41,16 @@
                 "amovieTemp/css/popuo-box.css",
                 "amovieTemp/css/font-awesome.min.css",
                 "amovieTemp/css/owl.carousel.css",
-                "aticketBooking/css/style.css"
-                
-                
+                "aticketBooking/css/style.css",
+                "adminVisitors/css/style.css",
+                "adminVisitors/css/style-responsive.css",
+                "adminVisitors/css/font-awesome.css",
+                "adminVisitors/css/morris.css",
+                "adminVisitors/css/monthly.css"
 
             ],
             "scripts": [
+              "node_modules/owl.carousel/dist/owl.carousel.min.js",
               "node_modules/jquery/dist/jquery.min.js",
               "amovieTemp/js/jquery-2.1.4.min.js",
               "amovieTemp/js/owl.carousel.js",
@@ -55,8 +59,9 @@
               "amovieTemp/js/jquery.slidey.js",
               "amovieTemp/js/jquery.dotdotdot.min.js",
               "amovieTemp/js/jquery.magnific-popup.js",
-              "amovieTemp/js/bootstrap.min.js",
-              "node_modules/owl.carousel/dist/owl.carousel.min.js"
+              "amovieTemp/js/bootstrap.min.js"
+              
+              
               
 
             ]

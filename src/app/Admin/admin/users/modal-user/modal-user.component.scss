@@ -1,0 +1,42 @@
+
+  .required{
+  color: red;
+}
+.modal_action{
+  margin-top: 20px;
+  text-align: right;
+  
+ .modal_submit{
+   margin-right: 10px;
+   
+ }
+}
+.user_check_form{
+  //padding-top: 8px;
+// display: table-cell; 
+//   vertical-align: baseline;
+ 
+  .fa-thumbs-o-up{
+  color: green;
+  font-size: 1.1rem;
+  }
+.fa-thumbs-o-down{
+  color: red;
+  font-size: 1.1rem;
+  margin-left: 1rem;
+  display: inline-block;
+}
+}
+.btn_groupcode{
+  background-color: #ddede0;
+  color: black;
+ // margin: 3px;
+  margin: 5px 10px;
+  outline: none;
+  &:active{
+    background-color: greenyellow;
+  }
+}
+.btn_groupcode_chosen{
+  background-color: lightseagreen;
+}
