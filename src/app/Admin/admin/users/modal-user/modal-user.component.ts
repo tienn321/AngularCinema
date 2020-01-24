@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy,Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter  } from '@angular/core';
 import { UserService } from 'src/app/_core/Services/user.service'
 import { Subscription } from 'rxjs';
 import { User, UserTypes } from 'src/app/_core/Models/User';
@@ -17,17 +17,18 @@ export class ModalUserComponent implements OnInit, OnDestroy {
   subServiceUpdate: Subscription;
   @Input() userEditInput: User; 
   @Input() isEditing: boolean = false;
-  @Input() displayInput: string; //default Variable
-  displayModal: string;
+  @Output() modalStatus = new EventEmitter;
+  @Output() userAfterEdit = new EventEmitter;
+  
 
   //sys methods
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.getUserTypes();
-    console.log('user need to edit modal', this.userEditInput)
-    console.log('status of edit', this.isEditing)
-    console.log('user need to edit modal', this.userEditInput)
+    // console.log('user need to edit modal', this.userEditInput)
+    // console.log('status of edit', this.isEditing)
+    // console.log('user need to edit modal', this.userEditInput)
   }
   ngOnDestroy() {
     if (this.subService) {
@@ -49,27 +50,27 @@ export class ModalUserComponent implements OnInit, OnDestroy {
       })
   }
   register(frmUser:User) {
-    //console.log("layuserregister", frmValue);
-    // this.userModal = { ...frmUser, maNhom: 'GP01' };
-    // console.log('form value',frmUser)
-    // console.log('rgt new user admin', this.userModal)
+    //console.log("layuserregister", frmUser);
+    let newUser = { ...frmUser, maNhom: 'GP01' };
+   
+    console.log('rgt new user admin', newUser)
     
 
-     // this.subServiceRegister = this.userService.register(newUser).subscribe(
-     //  (result: User) => {
-     //    swal.fire({
-     //      icon: "success",
-     //      title: "Successful register new account",
-     //      text: 'Wait for 4 us to navigate!',
-     //      showConfirmButton: false,
-     //      timer: 1000
-     //    });
-        
-     //    //setTimeout(() => { location.reload(); }, 1200)
-     //  }, error => {
-     //    console.log(error.error);
-     //    swal.fire("Thông báo", error.error, "error");
-     // });
+     this.subServiceRegister = this.userService.register(newUser).subscribe(
+      (result: User) => {
+        swal.fire({
+          icon: "success",
+          title: "Successful register new account",
+          text: 'Wait for 4 us to navigate!',
+          showConfirmButton: false,
+          timer: 1000
+        });
+        this.CloseModal()
+        //setTimeout(() => { location.reload(); }, 1200)
+      }, error => {
+        console.log(error.error);
+        swal.fire("Thông báo", error.error, "error");
+     });
   }
   
   UpdateUser(frmUpdateValue:User) {
@@ -77,23 +78,19 @@ export class ModalUserComponent implements OnInit, OnDestroy {
     let userUpdate = { ...frmUpdateValue, maNhom: 'GP01' };
     console.log('user new info', userUpdate)
     this.subServiceUpdate = this.userService.updateUser(userUpdate).subscribe((result: any) => {
-      swal.fire({
-        icon: "success",
-        title: 'Successfully update this user',
-        //text: 'Wait for 4 us to navigate!',
-        showConfirmButton: false,
-        timer: 1000
-      });
-      console.log('thong bao sau khi sua',result)
+      console.log('thong bao sau khi sua',result.data)
+    }, error => {
+      console.log(error.error)
     })
-
-    this.isEditing = false; 
-    
+    this.isEditing = false;
+    this.CloseModal();
+    this.userAfterEdit.emit(userUpdate);
   }
 
   CloseModal() {
-    this.displayModal = 'none';
+    this.modalStatus.emit(false);
   }
+
  
 
 

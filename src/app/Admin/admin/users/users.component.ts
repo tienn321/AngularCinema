@@ -17,20 +17,25 @@ export class UsersComponent implements OnInit {
   searchKw: string = '';
   userEdit: User;
   isEdit: boolean = false;
+  updateSuccess = false;
   displayModal: string = 'none';
-  //mySubscription: any;
-
+  action: boolean = false;
 
   constructor(private userService: UserService) {
      
    }
 
   ngOnInit() {
+    // setInterval(() => {
+    //   console.log('status biến edit', this.isEdit)
+    //   console.log('status hiển thị modal', this.displayModal)
+    // }, 3000)
   }
-
+ 
   findUser() {
+    this.action = true;
     let keyword = this.searchKw;
-    keyword = keyword.replace(/\s/g, "");
+    //keyword = keyword.replace(/\s/g, "");
     //console.log('tu khoa la',tuKhoa)
     this.subServiceFindUser = this.userService.findUser(keyword).subscribe((result:any) => {
       this.userFindArr = result;
@@ -58,11 +63,38 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  //Add
+
   EditThisUser(user: User) {
     this.userEdit = user;
     this.isEdit = true;
-    this.displayModal = 'block'
-    console.log('user need to edit', this.userEdit)
-    console.log('status of editting', this.isEdit)
+    this.checkStatusModal(this.isEdit);
   }
+  displayUserAfterEdit(user: User) {
+    this.searchKw = user.taiKhoan;
+    this.findUser();
+    this.updateSuccess = true;
+    setTimeout(() => {
+      this.updateSuccess = false;
+    },3000)
+  }
+
+  updateStatus(status: boolean) {
+    //console.log('biến edit nhận được ko',status)
+    this.isEdit = status;
+    this.checkStatusModal(this.isEdit);
+  }
+
+  checkStatusModal(status: boolean) {
+    //this.action = true;
+    console.log('status click',status)
+    if (status) {
+      this.displayModal = 'block';
+    }
+    else {
+      this.displayModal = 'none';
+    }
+  }
+
+
 }

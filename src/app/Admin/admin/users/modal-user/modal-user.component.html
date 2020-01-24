@@ -1,28 +1,25 @@
-<div id="add-user-modal"  class="modal fade" role="dialog" [ngStyle]="{'display':displayInput}">
-  <div class="modal-dialog modal-lg">
-    <!-- <div class="modal-content">    -->
-
     <section class="panel">
       <header class="panel-heading">
-          Add new user
+          <ng-container *ngIf='!isEditing;else editUser'>Add new user</ng-container>
+          <ng-template #editUser>Edit User</ng-template>
           <span class="tools pull-right" >
-              <a class="fa fa-times" href="javascript:;" data-dismiss="modal" ></a>
+              <a style="cursor: pointer;" class="fa fa-times" (click)='CloseModal()'></a>
               </span>
       </header>
-
       <div class="panel-body">
         <div class=" form" *ngIf='isEditing'>
-            <form #frmUpdateUsers="ngForm" class="cmxform form-horizontal " id="commentForm"
-            (ngSubmit)="UpdateUser(frmUpdateUsers.value);frmUpdateUsers.reset();CloseModal()">
+            <form #frmUpdateUsers="ngForm" class="cmxform form-horizontal" id="commentForm"
+            (ngSubmit)="UpdateUser(frmUpdateUsers.value);frmUpdateUsers.reset()"
+            >
 
             <div class="form-group ">
-              <label for="hoTen" class="control-label col-lg-3">Full Name edit</label>
+              <label for="hoTen" class="control-label col-lg-2">Full Name edit</label>
               <div class="col-lg-6">
                 <input type="text" class="form-control" id="hoTen" name="hoTen" minlength="4" maxlength="32" type="text" required #hoTen='ngModel' [(ngModel)]='userEditInput.hoTen'>
               </div>
 
               <!-- khu vực bắt lỗi -->
-              <div class="col-lg-3 user_check_form" *ngIf="(hoTen.dirty || hoTen.touched) && hoTen.errors"> 
+              <div class="col-lg-4 user_check_form" *ngIf="(hoTen.dirty || hoTen.touched) && hoTen.errors"> 
                   <i class="fa fa-long-arrow-left" style="color: red;"></i>
                   <span *ngIf="hoTen.errors.required" class="text-danger">
                  This field cant be blank
@@ -32,20 +29,20 @@
                 </span>
                 <i class="fa fa-thumbs-o-down"></i>
               </div>
-              <div class="col-lg-3 fade in user_check_form" *ngIf="(hoTen.dirty || hoTen.touched) && !hoTen.errors">
+              <div class="col-lg-4 fade in user_check_form" *ngIf="(hoTen.dirty || hoTen.touched) && !hoTen.errors">
                 <i class="fa fa-thumbs-o-up"></i>
               </div>
             </div>
 
             <div class="form-group ">
-                <label for="taiKhoan" class="control-label col-lg-3">Username
+                <label for="taiKhoan" class="control-label col-lg-2">Username
                     <span class="required">*</span>
                 </label>
                 <div class="col-lg-6">
-                    <input class=" form-control" id="taiKhoan" name="taiKhoan" minlength="4" type="text" required #taiKhoan='ngModel' [(ngModel)]='userEditInput.taiKhoan'>
+                    <input class=" form-control" id="taiKhoan" name="taiKhoan" type="text" required #taiKhoan='ngModel' [(ngModel)]='userEditInput.taiKhoan'>
                 </div>
 
-                <div class="col-lg-3 user_check_form" *ngIf="(taiKhoan.dirty || taiKhoan.touched) && taiKhoan.errors"> 
+                <div class="col-lg-4 user_check_form" *ngIf="(taiKhoan.dirty || taiKhoan.touched) && taiKhoan.errors"> 
                   <i class="fa fa-long-arrow-left" style="color: red;"></i>
                   <span *ngIf="taiKhoan.errors.required" class="text-danger">
                  This field cant be blank
@@ -62,12 +59,12 @@
             </div>
 
             <div class="form-group ">
-                <label for="matKhau" class="control-label col-lg-3">Password <span class="required">*</span></label>
+                <label for="matKhau" class="control-label col-lg-2">Password <span class="required">*</span></label>
                 <div class="col-lg-6">
-                    <input class="form-control " id="matKhau" name="matKhau" type="text" minlength="6" #matKhau='ngModel' [(ngModel)]='userEditInput.matKhau'>
+                    <input class="form-control " id="matKhau" name="matKhau" type="password" minlength="6" #matKhau='ngModel' [(ngModel)]='userEditInput.matKhau'>
                 </div>
 
-                <div class="col-lg-3 user_check_form" *ngIf="(matKhau.dirty || matKhau.touched) && matKhau.errors"> 
+                <div class="col-lg-4 user_check_form" *ngIf="(matKhau.dirty || matKhau.touched) && matKhau.errors"> 
                   <i class="fa fa-long-arrow-left" style="color: red;"></i>
                   <span *ngIf="matKhau.errors.required" class="text-danger">
                  This field cant be blank
@@ -77,19 +74,19 @@
                 </span>
                 <i class="fa fa-thumbs-o-down"></i>
               </div>
-              <div class="col-lg-3 fade in user_check_form" *ngIf="(matKhau.dirty || matKhau.touched) && !matKhau.errors">
+              <div class="col-lg-4 fade in user_check_form" *ngIf="(matKhau.dirty || matKhau.touched) && !matKhau.errors">
                 <i class="fa fa-thumbs-o-up"></i>
               </div>
 
             </div>
                     
             <div class="form-group ">
-                <label for="email" class="control-label col-lg-3">E-Mail <span class="required">*</span></label>
+                <label for="email" class="control-label col-lg-2">E-Mail <span class="required">*</span></label>
                 <div class="col-lg-6">
                     <input class="form-control " id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" required #email='ngModel' [(ngModel)]='userEditInput.email'>
                 </div>
 
-                <div class="col-lg-3 user_check_form" *ngIf="(email.dirty || email.touched) && email.errors"> 
+                <div class="col-lg-4 user_check_form" *ngIf="(email.dirty || email.touched) && email.errors"> 
                   <i class="fa fa-long-arrow-left" style="color: red;"></i>
                   <span *ngIf="email.errors.required" class="text-danger">
                  This field cant be blank
@@ -99,19 +96,19 @@
                 </span>
                 <i class="fa fa-thumbs-o-down"></i>
               </div>
-              <div class="col-lg-3 fade in user_check_form" *ngIf="(email.dirty || email.touched) && !email.errors">
+              <div class="col-lg-4 fade in user_check_form" *ngIf="(email.dirty || email.touched) && !email.errors">
                 <i class="fa fa-thumbs-o-up"></i>
               </div>
 
             </div>
 
             <div class="form-group ">
-                <label for="soDt" class="control-label col-lg-3">Phone number <span class="required">*</span></label>
+                <label for="soDt" class="control-label col-lg-2">Phone number <span class="required">*</span></label>
                 <div class="col-lg-6">
                     <input class="form-control " id="soDt" name="soDt" type='number' minlength="9" maxlength="10" required #soDt='ngModel' [(ngModel)]='userEditInput.soDt'>
                 </div>
 
-                <div class="col-lg-3 user_check_form" *ngIf="(soDt.dirty || soDt.touched) && soDt.errors"> 
+                <div class="col-lg-4 user_check_form" *ngIf="(soDt.dirty || soDt.touched) && soDt.errors"> 
                   <i class="fa fa-long-arrow-left" style="color: red;"></i>
                   <span *ngIf="soDt.errors.required" class="text-danger">
                  This field cant be blank
@@ -121,29 +118,15 @@
                 </span>
                 <i class="fa fa-thumbs-o-down"></i>
               </div>
-              <div class="col-lg-3 fade in user_check_form" *ngIf="(soDt.dirty || soDt.touched) && !soDt.errors">
+              <div class="col-lg-4 fade in user_check_form" *ngIf="(soDt.dirty || soDt.touched) && !soDt.errors">
                 <i class="fa fa-thumbs-o-up"></i>
               </div>
 
             </div>
 
-            <!-- <div class="form-group ">
-                <label for="maNhom" class="control-label col-lg-3">Group code <span class="required">*</span></label>
-                <div class="col-lg-6">
-                    
-                    <select required #maNhom='ngModel' [(ngModel)]='groupCode[0]'
-                   name="maNhom" class="form-control">
-                    <option *ngFor='let code of groupCode;let i = index' [value]="code">
-                      {{code}}
-                    </option>
-                  </select>
-                </div>
-            </div> -->
-
             <div class="form-group ">
-                <label for="maLoaiNguoiDung" class="control-label col-lg-3">Type of user <span class="required">*</span></label>
+                <label for="maLoaiNguoiDung" class="control-label col-lg-2">Type of user <span class="required">*</span></label>
                 <div class="col-lg-6">
-                  <!-- <input class="form-control " id="maLoaiNguoiDung" name="maLoaiNguoiDung" type='text' required=""> -->
                   <select required 
                    #maLoaiNguoiDung='ngModel' [(ngModel)]='userEditInput.maLoaiNguoiDung'
                    name="maLoaiNguoiDung" class="form-control">
@@ -154,9 +137,8 @@
             </div>
 
                     <div class="form-group ">
-                        <div class="col-lg-offset-3 col-lg-6 modal_action">
-                            <button class="btn btn-success modal_submit" type="submit">Update</button>
-                            <button class="btn btn-default" (click)='CloseModal()' >Cancel</button>
+                        <div class="col-lg-offset-2 col-lg-6 modal_action">
+                            <button class="btn btn-success modal_submit">Update</button>
                         </div>
                     </div>
 
@@ -164,18 +146,18 @@
                 </form>
         </div>
 
-        <!-- <div class=" form" *ngIf='!isEditing'>
-            <form #frm4Users="ngForm" class="cmxform form-horizontal " id="commentForm"
-            (ngSubmit)="register(frm4Users.value);frm4Users.reset()">
+        <div class=" form" *ngIf='!isEditing'>
+            <form #frmAddUsers="ngForm" class="cmxform form-horizontal " 
+            (ngSubmit)="register(frmAddUsers.value);frmAddUsers.reset()">
 
             <div class="form-group ">
-              <label for="hoTen" class="control-label col-lg-3">Full Name</label>
+              <label for="hoTen" class="control-label col-lg-2">Full Name</label>
               <div class="col-lg-6">
-                <input type="text" class="form-control" id="hoTen" name="hoTen" minlength="4" maxlength="32" type="text" required [(ngModel)]='userModal.hoTen' [value]='userModal.hoTen' #hoTen='ngModel'>
+                <input type="text" class="form-control" id="hoTen" name="hoTen" minlength="4" maxlength="32" type="text" required ngModel #hoTen='ngModel'>
               </div>
 
              
-              <div class="col-lg-3 user_check_form" *ngIf="(hoTen.dirty || hoTen.touched) && hoTen.errors"> 
+              <div class="col-lg-4 user_check_form" *ngIf="(hoTen.dirty || hoTen.touched) && hoTen.errors"> 
                   <i class="fa fa-long-arrow-left" style="color: red;"></i>
                   <span *ngIf="hoTen.errors.required" class="text-danger">
                  This field cant be blank
@@ -185,20 +167,20 @@
                 </span>
                 <i class="fa fa-thumbs-o-down"></i>
               </div>
-              <div class="col-lg-3 fade in user_check_form" *ngIf="(hoTen.dirty || hoTen.touched) && !hoTen.errors">
+              <div class="col-lg-4 fade in user_check_form" *ngIf="(hoTen.dirty || hoTen.touched) && !hoTen.errors">
                 <i class="fa fa-thumbs-o-up"></i>
               </div>
             </div>
 
             <div class="form-group ">
-                <label for="taiKhoan" class="control-label col-lg-3">Username
+                <label for="taiKhoan" class="control-label col-lg-2">Username
                     <span class="required">*</span>
                 </label>
                 <div class="col-lg-6">
-                    <input class=" form-control" id="taiKhoan" name="taiKhoan" minlength="4" type="text" required #taiKhoan='ngModel' [(ngModel)]='userModal.taiKhoan'>
+                    <input class=" form-control" id="taiKhoan" name="taiKhoan" minlength="4" type="text" required #taiKhoan='ngModel' ngModel>
                 </div>
 
-                <div class="col-lg-3 user_check_form" *ngIf="(taiKhoan.dirty || taiKhoan.touched) && taiKhoan.errors"> 
+                <div class="col-lg-4 user_check_form" *ngIf="(taiKhoan.dirty || taiKhoan.touched) && taiKhoan.errors"> 
                   <i class="fa fa-long-arrow-left" style="color: red;"></i>
                   <span *ngIf="taiKhoan.errors.required" class="text-danger">
                  This field cant be blank
@@ -208,19 +190,19 @@
                 </span>
                 <i class="fa fa-thumbs-o-down"></i>
               </div>
-              <div class="col-lg-3 fade in user_check_form" *ngIf="(taiKhoan.dirty || taiKhoan.touched) && !taiKhoan.errors">
+              <div class="col-lg-4 fade in user_check_form" *ngIf="(taiKhoan.dirty || taiKhoan.touched) && !taiKhoan.errors">
                 <i class="fa fa-thumbs-o-up"></i>
               </div>
 
             </div>
 
             <div class="form-group ">
-                <label for="matKhau" class="control-label col-lg-3">Password <span class="required">*</span></label>
+                <label for="matKhau" class="control-label col-lg-2">Password <span class="required">*</span></label>
                 <div class="col-lg-6">
-                    <input class="form-control " id="matKhau" name="matKhau" type="text" minlength="6" #matKhau='ngModel' [(ngModel)]='userModal.matKhau'>
+                    <input class="form-control " id="matKhau" name="matKhau" type="text" minlength="6" #matKhau='ngModel' ngModel>
                 </div>
 
-                <div class="col-lg-3 user_check_form" *ngIf="(matKhau.dirty || matKhau.touched) && matKhau.errors"> 
+                <div class="col-lg-4 user_check_form" *ngIf="(matKhau.dirty || matKhau.touched) && matKhau.errors"> 
                   <i class="fa fa-long-arrow-left" style="color: red;"></i>
                   <span *ngIf="matKhau.errors.required" class="text-danger">
                  This field cant be blank
@@ -230,19 +212,19 @@
                 </span>
                 <i class="fa fa-thumbs-o-down"></i>
               </div>
-              <div class="col-lg-3 fade in user_check_form" *ngIf="(matKhau.dirty || matKhau.touched) && !matKhau.errors">
+              <div class="col-lg-4 fade in user_check_form" *ngIf="(matKhau.dirty || matKhau.touched) && !matKhau.errors">
                 <i class="fa fa-thumbs-o-up"></i>
               </div>
 
             </div>
                     
             <div class="form-group ">
-                <label for="email" class="control-label col-lg-3">E-Mail <span class="required">*</span></label>
+                <label for="email" class="control-label col-lg-2">E-Mail <span class="required">*</span></label>
                 <div class="col-lg-6">
-                    <input class="form-control " id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" required #email='ngModel' [(ngModel)]='userModal.email'>
+                    <input class="form-control " id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" required #email='ngModel' ngModel>
                 </div>
 
-                <div class="col-lg-3 user_check_form" *ngIf="(email.dirty || email.touched) && email.errors"> 
+                <div class="col-lg-4 user_check_form" *ngIf="(email.dirty || email.touched) && email.errors"> 
                   <i class="fa fa-long-arrow-left" style="color: red;"></i>
                   <span *ngIf="email.errors.required" class="text-danger">
                  This field cant be blank
@@ -252,19 +234,19 @@
                 </span>
                 <i class="fa fa-thumbs-o-down"></i>
               </div>
-              <div class="col-lg-3 fade in user_check_form" *ngIf="(email.dirty || email.touched) && !email.errors">
+              <div class="col-lg-4 fade in user_check_form" *ngIf="(email.dirty || email.touched) && !email.errors">
                 <i class="fa fa-thumbs-o-up"></i>
               </div>
 
             </div>
 
             <div class="form-group ">
-                <label for="soDt" class="control-label col-lg-3">Phone number <span class="required">*</span></label>
+                <label for="soDt" class="control-label col-lg-2">Phone number <span class="required">*</span></label>
                 <div class="col-lg-6">
-                    <input class="form-control " id="soDt" name="soDt" type='number' minlength="9" maxlength="10" required #soDt='ngModel' [(ngModel)]='userModal.soDt'>
+                    <input class="form-control " id="soDt" name="soDt" type='text' minlength="9" maxlength="10" required #soDt='ngModel' ngModel>
                 </div>
 
-                <div class="col-lg-3 user_check_form" *ngIf="(soDt.dirty || soDt.touched) && soDt.errors"> 
+                <div class="col-lg-4 user_check_form" *ngIf="(soDt.dirty || soDt.touched) && soDt.errors"> 
                   <i class="fa fa-long-arrow-left" style="color: red;"></i>
                   <span *ngIf="soDt.errors.required" class="text-danger">
                  This field cant be blank
@@ -274,7 +256,7 @@
                 </span>
                 <i class="fa fa-thumbs-o-down"></i>
               </div>
-              <div class="col-lg-3 fade in user_check_form" *ngIf="(soDt.dirty || soDt.touched) && !soDt.errors">
+              <div class="col-lg-4 fade in user_check_form" *ngIf="(soDt.dirty || soDt.touched) && !soDt.errors">
                 <i class="fa fa-thumbs-o-up"></i>
               </div>
 
@@ -282,10 +264,10 @@
 
            
             <div class="form-group ">
-                <label for="maLoaiNguoiDung" class="control-label col-lg-3">Type of user <span class="required">*</span></label>
+                <label for="maLoaiNguoiDung" class="control-label col-lg-2">Type of user <span class="required">*</span></label>
                 <div class="col-lg-6">
                   <select required
-                   #maLoaiNguoiDung='ngModel' [(ngModel)]='userModal.maLoaiNguoiDung'
+                   #maLoaiNguoiDung='ngModel' ngModel
                    name="maLoaiNguoiDung" class="form-control">
                    <option value="" selected disabled>Please select</option>
                     <option *ngFor='let type of userTypes' [value]="type.maLoaiNguoiDung">{{type.tenLoai}}</option>
@@ -294,20 +276,16 @@
             </div>
 
                     <div class="form-group ">
-                        <div class="col-lg-offset-3 col-lg-6 modal_action">
+                        <div class="col-lg-offset-2 col-lg-6 modal_action">
                             <button class="btn btn-info modal_submit" type="submit" >Submit</button>
-                            <button class="btn btn-default" data-dismiss="modal" (click)='frm4Users.reset()'>Cancel</button>
+                            <!-- <button class="btn btn-default" data-dismiss="modal" (click)='frm4Users.reset()'>Cancel</button> -->
                         </div>
                     </div>
 
 
                 </form>
-        </div> -->
+        </div>
 
         </div>
 
       </section>
-      <!-- </div> -->
-
-  </div>
-</div>
