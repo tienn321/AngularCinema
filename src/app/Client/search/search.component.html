@@ -15,12 +15,12 @@
 							<h3 class='searchresult_title'>Your Search Result</h3>
             </div>
             <div class="video-grid-single-page-agileits row searchresult_block" *ngFor='let filmresult of filmResultArr'>
-              <div class="col-xs-3">
+              <div style="cursor: pointer;" class="col-xs-3" routerLink='/detail/{{filmresult.maPhim}}'>
                 <img [src]='filmresult.hinhAnh'/>
               </div>
               <div class="col-xs-9 searchresult_detail">
-                <h4 class="searchresult_tenphim">{{filmresult.tenPhim}}</h4>
-                <p>{{filmresult.moTa}}</p>
+                <h4 style="cursor: pointer;" routerLink='/detail/{{filmresult.maPhim}}' class="searchresult_tenphim">{{filmresult.tenPhim}}</h4>
+                <p>{{filmresult.moTa | slice:0:600}}</p>
                 <button class="btn" routerLink='/detail/{{filmresult.maPhim}}'>More...</button>
               </div>
               

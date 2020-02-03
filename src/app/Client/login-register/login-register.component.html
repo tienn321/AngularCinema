@@ -23,7 +23,7 @@
 								<!-- form login ở đây -->
 							  <div class="form" style="display: block;" *ngIf='!isRegistering'>
 									<h3>Your account</h3>
-									<form #frmLogin="ngForm" (ngSubmit)="login(frmLogin.value)" >
+									<form #frmLogin="ngForm" (ngSubmit)="login(frmLogin.value);frmLogin.reset()" >
 
 									<input minlength="6" maxlength="32" type="text" placeholder="Username" required name="taiKhoan" #taiKhoan='ngModel' ngModel/>
 									
@@ -37,7 +37,7 @@
 										</div>
 									</div>
 
-									<input type="password" placeholder="Password here" required name="matKhau" #matKhau='ngModel' ngModel>
+									<input type="password" placeholder="Password here" required name="matKhau" #matKhau='ngModel' ngModel (keyup.enter)="login(frmLogin.value)">
 									
 									<div *ngIf="(matKhau.touched || matKhau.dirty) && matKhau.errors">
 										<div class="alert alert-danger" *ngIf="matKhau.errors.required">
@@ -53,7 +53,7 @@
 								<h3>Create an account</h3>
 								<form action="#" method="post"
 								#frmRegister="ngForm"
-								(ngSubmit)="register(frmRegister.value)">
+								(ngSubmit)="register(frmRegister.value);frmRegister.reset()">
 									
 								<input type="text" name="hoTen" placeholder="Your Name" required name="hoTen" #hoTen='ngModel' ngModel >
 

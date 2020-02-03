@@ -26,9 +26,6 @@ export class ModalUserComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getUserTypes();
-    // console.log('user need to edit modal', this.userEditInput)
-    // console.log('status of edit', this.isEditing)
-    // console.log('user need to edit modal', this.userEditInput)
   }
   ngOnDestroy() {
     if (this.subService) {
@@ -36,6 +33,9 @@ export class ModalUserComponent implements OnInit, OnDestroy {
     }
     if (this.subServiceRegister) {
       this.subServiceRegister.unsubscribe();
+    }
+    if (this.subServiceUpdate) {
+      this.subServiceUpdate.unsubscribe();
     }
   }
 
@@ -56,7 +56,7 @@ export class ModalUserComponent implements OnInit, OnDestroy {
     console.log('rgt new user admin', newUser)
     
 
-     this.subServiceRegister = this.userService.register(newUser).subscribe(
+    this.subServiceRegister = this.userService.createNewUser(newUser).subscribe(
       (result: User) => {
         swal.fire({
           icon: "success",

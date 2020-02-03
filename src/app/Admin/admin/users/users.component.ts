@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from 'src/app/_core/Services/user.service'
 import { Subscription } from 'rxjs';
 import { User, UserTypes } from 'src/app/_core/Models/User';
@@ -9,7 +9,7 @@ import swal from "sweetalert2";
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
   subServiceFindUser: Subscription;
   subServiceDeleteUser: Subscription;
   userFindArr: User[] = [];
@@ -31,11 +31,20 @@ export class UsersComponent implements OnInit {
     //   console.log('status hiển thị modal', this.displayModal)
     // }, 3000)
   }
+  ngOnDestroy() {
+    if (this.subServiceFindUser) {
+      this.subServiceFindUser.unsubscribe();
+    }
+    if (this.subServiceDeleteUser) {
+      this.subServiceDeleteUser.unsubscribe();
+    }
+  }
  
   findUser() {
     this.action = true;
+    //this.isSearch = true;
     let keyword = this.searchKw;
-    //keyword = keyword.replace(/\s/g, "");
+    keyword = keyword.trim();
     //console.log('tu khoa la',tuKhoa)
     this.subServiceFindUser = this.userService.findUser(keyword).subscribe((result:any) => {
       this.userFindArr = result;
@@ -70,6 +79,7 @@ export class UsersComponent implements OnInit {
     this.isEdit = true;
     this.checkStatusModal(this.isEdit);
   }
+  
   displayUserAfterEdit(user: User) {
     this.searchKw = user.taiKhoan;
     this.findUser();

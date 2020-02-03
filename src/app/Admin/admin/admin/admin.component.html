@@ -193,20 +193,20 @@
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
         <li>
-            <input type="text" class="form-control search" placeholder=" Search">
+            <!-- <input type="text" class="form-control search" placeholder=" Search"> -->
         </li>
         <!-- user login dropdown start-->
         <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <img alt="" src="images/2.png">
-                <span class="username">John Doe</span>
-                <b class="caret"></b>
+            <a data-toggle="dropdown" class="dropdown-toggle" >
+                <i class="fa fa-user user-ava"></i>
+                <span class="username">{{userPro5.taiKhoan}}</span>
+                
             </a>
-            <ul class="dropdown-menu extended logout">
+            <!-- <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                 <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
-            </ul>
+            </ul> -->
         </li>
         <!-- user login dropdown end -->
        
@@ -223,7 +223,7 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" routerLink='/admin'>
+                    <a routerLink='/admin'>
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
@@ -252,49 +252,9 @@
                     </ul> -->
                 </li>
 
-                <!-- <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-tasks"></i>
-                        <span>Form Components</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="form_component.html">Form Elements</a></li>
-                        <li><a href="form_validation.html">Form Validation</a></li>
-						<li><a href="dropzone.html">Dropzone</a></li>
-                    </ul>
-                </li>
+                
                 <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-envelope"></i>
-                        <span>Mail </span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="mail.html">Inbox</a></li>
-                        <li><a href="mail_compose.html">Compose Mail</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class=" fa fa-bar-chart-o"></i>
-                        <span>Charts</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="chartjs.html">Chart js</a></li>
-                        <li><a href="flot_chart.html">Flot Charts</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class=" fa fa-bar-chart-o"></i>
-                        <span>Maps</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="google_map.html">Google Map</a></li>
-                        <li><a href="vector_map.html">Vector Map</a></li>
-                    </ul>
-                </li> -->
-                <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a routerLink="/admin/newsletter">
                         <i class="fa fa-glass"></i>
                         <span>Newsletter List</span>
                     </a>
@@ -304,8 +264,14 @@
                         <li><a href="registration.html">Registration</a></li>
                     </ul> -->
                 </li> 
+                <li class="sub-menu">
+                    <a routerLink="/">
+                        <i class="fa fa-reply"></i>
+                        <span>Back to Home</span>
+                    </a>
+                </li>
                 <li>
-                    <a href="javascript:;">
+                    <a style="cursor: pointer;" (click)='LogOut()'>
                         <i class="fa fa-power-off"></i>
                         <span>Log Out</span>
                     </a>

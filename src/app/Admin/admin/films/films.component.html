@@ -13,22 +13,23 @@
       Film Management
     </div>
     <div class="row w3-res-tb">
-      <div class="col-sm-5 m-b-xs">
-        <select class="input-sm form-control w-sm inline v-middle">
+      <div class="col-sm-4 m-b-xs">
+        <!-- <select class="input-sm form-control w-sm inline v-middle">
           <option value="0">Bulk action</option>
           <option value="1">Delete selected</option>
           <option value="2">Bulk edit</option>
           <option value="3">Export</option>
         </select>
-        <button class="btn btn-sm btn-default">Apply</button>                
-      </div>
-      <div class="col-sm-4">
+        <button class="btn btn-sm btn-default">Apply</button>                 -->
       </div>
       <div class="col-sm-3">
+      </div>
+      <button (click)='checkStatusModal(true)' class="btn btn-primary col-sm-2"><i class="fa fa-plus-circle"></i>  ADD NEW FILM</button>
+      <div class="col-sm-3">
         <div class="input-group">
-          <input type="text" class="input-sm form-control" placeholder="Search">
+          <input [(ngModel)]='searchKw' type="text" class="input-sm form-control" placeholder="Search film name" (keyup.enter)="findFilm()">
           <span class="input-group-btn">
-            <button class="btn btn-sm btn-default" type="button">Go!</button>
+            <button class="btn btn-sm btn-default" type="button" (click)='findFilm()'>Go!</button>
           </span>
         </div>
       </div>
@@ -51,8 +52,8 @@
         </thead>
 
         <tbody>
-
-          <tr *ngFor='let film of filmsArr | paginate:{itemsPerPage: 6, currentPage:p}' class="film_table">
+          <ng-container *ngIf='!isSearch'>
+          <tr *ngFor='let film of filmsArr | paginate:{itemsPerPage: 5, currentPage:p}' class="film_table">
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
 
             <td class="film_img">
@@ -67,84 +68,52 @@
             
             <td class='film_info_fn'>
               <a class="active" ui-toggle-class="">
-                <i 
+                <i (click)='EditThisFilm(film)'
                 class="fa fa fa-edit text-warning "></i>
                 <i (click)='DelThisFilm(film.maPhim)' class="fa fa-times text-danger text"></i>
               </a>
             </td>
           </tr>
+          </ng-container>
+          <ng-container *ngIf='isSearch'>
+            <tr *ngFor='let filmRes of filmFindArr | paginate:{itemsPerPage: 5, currentPage:p}' class="film_table">
+            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
 
-          <!-- <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>Formasa</td>
-            <td>8c</td>
-            <td>Jul 22, 2013</td>
-            <td>
-              <a href="" ui-toggle-class=""><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+            <td class="film_img">
+              <img [src]='filmRes.hinhAnh'/>
+            </td>
+            <td class="film_info">
+              <p style="position: relative;" class='film_info_title'>{{filmRes.tenPhim}}
+                <ng-container *ngIf='filmRes.maPhim==maHienThi'>
+                  <span *ngIf='updateSuccess' class="tooltip-update">Successfully updated this film</span>
+                </ng-container>
+                
+              </p> 
+              <p class='film_info_desc'>{{filmRes.moTa | slice:0:200}}</p>
+              
+            </td>
+            <td class='film_info_date'>{{filmRes.ngayKhoiChieu | date: 'dd/MM/y'}}</td>
+            <!-- <td><span class="text-ellipsis">zzzzzz</span></td> -->
+            
+            <td class='film_info_fn'>
+              <a class="active" ui-toggle-class="">
+                <i (click)='EditThisFilm(filmRes)'
+                class="fa fa fa-edit text-warning "></i>
+                <i (click)='DelThisFilm(filmRes.maPhim)' class="fa fa-times text-danger text"></i>
+              </a>
             </td>
           </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>Avatar system</td>
-            <td>15c</td>
-            <td>Jul 15, 2013</td>
-            <td>
-              <a href="" class="active" ui-toggle-class=""><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>Throwdown</td>
-            <td>4c</td>
-            <td>Jul 11, 2013</td>
-            <td>
-              <a href="" class="active" ui-toggle-class=""><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>Idrawfast</td>
-            <td>4c</td>
-            <td>Jul 7, 2013</td>
-            <td>
-              <a href="" class="active" ui-toggle-class=""><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>Formasa</td>
-            <td>8c</td>
-            <td>Jul 3, 2013</td>
-            <td>
-              <a href="" class="active" ui-toggle-class=""><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>Avatar system</td>
-            <td>15c</td>
-            <td>Jul 2, 2013</td>
-            <td>
-              <a href="" class="active" ui-toggle-class=""><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>Videodown</td>
-            <td>4c</td>
-            <td>Jul 1, 2013</td>
-            <td>
-              <a href="" class="active" ui-toggle-class=""><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-          </tr> -->
+          </ng-container>
+
+         
 
         </tbody>
         
       </table>
       <pagination-controls class="pagination" (pageChange)="p=$event" previousLabel="" nextLabel="" ></pagination-controls>
-      <button data-toggle="modal" data-target="#modalEditFilm">modal</button>
+      
     </div>
 
   </div>
 </div>
-<app-edit-film></app-edit-film>
+<app-modal-film class="displayModal" [ngStyle]="{'display': displayModal}" (modalStatus)='updateStatus($event)' [filmEditInput]='filmEdit' [isEditing]='isEditFilm' (filmAfterEdit)='displayFilmAfterEdit($event)'></app-modal-film>

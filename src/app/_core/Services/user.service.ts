@@ -31,12 +31,16 @@ export class UserService {
     let observable: Observable<any> = this._http.get(api.userManagement.getUserTypes)
     return observable;
   } 
+
+  public createNewUser(newUser: User): Observable<any> {
+    let header = new HttpHeaders({ Authorization: 'Bearer ' + localStorage.getItem("accessToken") });
+    // header.set("Content-Type", "application/json; charset=utf-8");
+    let observable: Observable<any> = this._http.post(api.userManagement.createNewUser, newUser, { headers: header, responseType: 'json' });
+    return observable;  
+  }
   
   //findUser
   public findUser(tuKhoa: string): Observable<User[]> {
-    // let header: HttpHeaders = new HttpHeaders(
-    //   { Authorization: 'Bearer ' + localStorage.getItem("accessToken") });
-    // header.set("Content-Type", "application/json; charset=utf-8");
     let observable: Observable<any> = this._http.get(api.userManagement.findUser(tuKhoa))
     return observable;
   } 

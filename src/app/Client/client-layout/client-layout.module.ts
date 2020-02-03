@@ -17,6 +17,7 @@ import { NgxPaginationModule } from "ngx-pagination";
 import { CarouselModule } from "ngx-owl-carousel-o";
 import { ModalTrailerComponent } from '../carousel-film/modal-trailer/modal-trailer.component';
 import { SearchComponent } from '../search/search.component';
+import { NewsComponent } from '../homepage/news/news.component';
 //import { Page403Component } from '../page403/page403.component';
 
 
@@ -48,7 +49,7 @@ const clientRoutes: Routes = [
     FilmShowtimesComponent,
     ModalTrailerComponent,
     SearchComponent,
-    
+    NewsComponent
   ],
   imports: [
     CommonModule,

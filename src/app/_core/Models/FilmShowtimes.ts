@@ -25,7 +25,7 @@ export class FilmShowtimes {
   hinhAnh: string;
   moTa: string;
   maNhom: string;
-  ngayKhoiChieu: Date;
+  ngayKhoiChieu: string;
   danhGia: number;
   constructor() {}
   }

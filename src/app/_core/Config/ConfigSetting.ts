@@ -10,40 +10,65 @@ export const local = {
 
 //Api 4 films
 export const api = {
-  filmManagement: {
-    getAllFilms: domain + '/QuanLyPhim/LayDanhSachPhim?maNhom=' + local.groupID,
+         filmManagement: {
+           getAllFilms:
+             domain + "/QuanLyPhim/LayDanhSachPhim?maNhom=" + local.groupID,
 
-    getFilmsByPagination: (soTrang: number, soPhanTuTrenTrang: number) => domain + '/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=' + local.groupID + `&soTrang=${soTrang}&soPhanTuTrenTrang=${soPhanTuTrenTrang}`,
+           getFilmsByPagination: (soTrang: number, soPhanTuTrenTrang: number) =>
+             domain +
+             "/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=" +
+             local.groupID +
+             `&soTrang=${soTrang}&soPhanTuTrenTrang=${soPhanTuTrenTrang}`,
 
-    getFilmDetail: (maPhim: number) => domain + `/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
+           getFilmDetail: (maPhim: number) =>
+             domain + `/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
 
-    getFilmSearch: (tenPhim: string) => domain + '/QuanLyPhim/LayDanhSachPhim?maNhom=' + local.groupID + `&tenPhim=${tenPhim}`,
+           getFilmSearch: (tenPhim: string) =>
+             domain +
+             "/QuanLyPhim/LayDanhSachPhim?maNhom=" +
+             local.groupID +
+             `&tenPhim=${tenPhim}`,
 
-    getCinemaShowtimes: domain + '/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=' + local.groupID,
+           getCinemaShowtimes:
+             domain +
+             "/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=" +
+             local.groupID,
 
-    getCinemas: domain + '/QuanLyRap/LayThongTinHeThongRap',
+           getCinemas: domain + "/QuanLyRap/LayThongTinHeThongRap",
 
-    getBookingTicket: (maLichChieu: number) => domain + `/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`,
+           getBookingTicket: (maLichChieu: number) =>
+             domain +
+             `/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`,
 
-    bookTheTickets: domain + '/QuanLyDatVe/DatVe',
+           bookTheTickets: domain + "/QuanLyDatVe/DatVe",
 
-    deleteFilm: (maPhim: number) => domain + `/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`
-  },
+           deleteFilm: (maPhim: number) =>
+             domain + `/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
 
-  userManagement: {
-    userLogin: domain + '/QuanLyNguoiDung/DangNhap',
+           addFilm: domain + `/QuanLyPhim/ThemPhim`,
+           uploadImg: domain +  `/QuanLyPhim/UploadHinhAnhPhim`,
+          updateFilm: domain + `/QuanLyPhim/CapNhatPhim`
+         },
 
-    userRegister: domain + '/QuanLyNguoiDung/DangKy',
+         userManagement: {
+           userLogin: domain + "/QuanLyNguoiDung/DangNhap",
 
-    getUserTypes: domain + '/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung',
+           userRegister: domain + "/QuanLyNguoiDung/DangKy",
+           createNewUser: domain + "/QuanLyNguoiDung/ThemNguoiDung",
 
-    findUser: (tuKhoa: string) => domain + '/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=' + local.groupID + `&tuKhoa=${tuKhoa}`,
+           getUserTypes: domain + "/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung",
 
-    deleteUser: (taiKhoan: string) => domain + `/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+           findUser: (tuKhoa: string) =>
+             domain +
+             "/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=" +
+             local.groupID +
+             `&tuKhoa=${tuKhoa}`,
 
-    updateUser: domain + "/QuanLyNguoiDung/CapNhatThongTinNguoiDung"
-  }
+           deleteUser: (taiKhoan: string) =>
+             domain + `/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
 
-}
+           updateUser: domain + "/QuanLyNguoiDung/CapNhatThongTinNguoiDung"
+         }
+       };
 
   

@@ -9,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ModalTrailerComponent implements OnInit {
 
   //props here
-  @Input() trailerInput: string;
+  @Input() trailerInput: string = '';
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {

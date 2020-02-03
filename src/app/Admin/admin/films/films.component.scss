@@ -47,3 +47,34 @@ table th {
   font-size: 1rem;
   margin-left: 20px;
 }
+.displayModal{
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  right: 0;
+  width: 800px;
+  margin-right: 2em;
+}
+.tooltip-update{
+  display: inline-block;
+  position: absolute;
+  z-index: 10;
+  left: 20%;
+  top:10%;
+  background: rgba(0, 0, 0, 0.1);
+  width: 120px;
+  padding: 5px;
+  line-height: 1.2;
+  color: #27C24C;
+  font-size: 15px;
+  text-align: center;
+  &::before{
+    display: block;
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -5px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid rgba(0, 0, 0, 0.1);
+}}

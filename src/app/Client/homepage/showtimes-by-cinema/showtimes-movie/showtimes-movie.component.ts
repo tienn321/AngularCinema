@@ -15,7 +15,7 @@ export class ShowtimesMovieComponent implements OnInit, OnDestroy {
   @Input() cineGroupInput: string;
   
   //filmShowtimes: any;
-  cardFilm: any; // <----- check lai cho nay
+  cardFilm: FilmShowtimes; // <----- check lai cho nay
   subService: Subscription;
   arrLichChieu: any[];
 
@@ -35,7 +35,7 @@ export class ShowtimesMovieComponent implements OnInit, OnDestroy {
   
 
   getCardFilm(maPhim: number) {
-    this.subService = this.filmService.getFilmInDetail(maPhim).subscribe((data) => {
+    this.subService = this.filmService.getFilmInDetail(maPhim).subscribe((data:FilmShowtimes) => {
       this.cardFilm = data;
       //console.log('lay lich chieu cardfilm', this.cardFilm)
     }, error => { console.log(error.error) }

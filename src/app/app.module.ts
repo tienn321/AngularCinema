@@ -12,6 +12,7 @@ import { Page404Component } from './Client/page404/page404.component';
 import { Page403Component } from './Client/page403/page403.component';
 import { ClientLayoutModule } from './Client/client-layout/client-layout.module';
 import { AdminModule } from './Admin/admin/admin.module';
+// import { NewsComponent } from './Client/homepage/news/news.component';
 //import { SearchComponent } from './Client/search/search.component';
 
 

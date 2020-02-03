@@ -1,0 +1,67 @@
+.user_check_form{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: flex-end;
+ 
+  .fa-thumbs-o-up{
+  color: green;
+ // font-size: 1.1rem;
+ line-height: 1.5;
+ align-items: flex-end;
+ 
+  }
+.fa-thumbs-o-down{
+  color: red;
+  //font-size: 1.1rem;
+  line-height: 1.5;
+  margin-left: 1rem;
+  align-items: flex-end;
+  //display: inline-block;
+}
+}
+.form-group{
+.col_left{
+  padding-left: 0;
+}
+.col_right{
+  padding-right: 0;
+}
+}
+#drop{
+  height: 100px;
+  padding: 20px;
+  position: relative;
+  cursor: pointer;
+   .edit_img{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 1.5rem;
+  }
+ 
+}
+.img_display {
+  width:100%;
+  height: 280px ;
+  position:relative;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .fa-edit{
+    position:absolute;
+    bottom:0;
+    right:0;
+    z-index:5;
+    font-size:1.2rem;
+    background-color: #FF6C60;
+    color: white;
+    padding: 3px 4px;
+    
+  }
+}
+.required{
+  color: red;
+}

@@ -71,8 +71,8 @@
       <ul class="nav navbar-nav nav_phim text-uppercase">
         <li><a routerLink="/">HOME</a></li>
         <li><a href="#myCarousel">Now SHOWING</a></li>
-        <li><a href="news.html">NEWS</a></li>
-        <li><a href="short-codes.html">CONTACT US</a></li>
+        <li><a href="#news">NEWS</a></li>
+        <li><a href="#footer">CONTACT US</a></li>
         <!-- <li><a href="list.html">A - z list</a></li> -->
       </ul>
     </nav>
@@ -85,22 +85,26 @@
 <router-outlet></router-outlet>
 
 <!-- FOOTER Ở ĐÂY -->
-<div class="footer">
+<div class="footer" id='footer'>
   <div class="container">
     <div class="w3ls_footer_grid">
       <div class="col-md-6 w3ls_footer_grid_left">
         <div class="w3ls_footer_grid_left1">
           <h2>SUBSCRIBE TO US</h2>
           <div class="w3ls_footer_grid_left1_pos">
-            <form action="#" method="post">
+            <form #formNewsletter="ngForm"
+             action="#" method="post" class="newsletter_input">
+              <span *ngIf='regSuccess' class="tooltip_annouce">Thanks for registering. We got your email!!!</span>
               <input
                 type="email"
                 name="email"
                 placeholder="Your email here..."
-                required=""
+                #emailNewsletter ngModel
               />
-              <input type="submit" value="send" />
-            </form>
+              
+              <input type="submit" value="send" (click)='NewsletterList(emailNewsletter.value);formNewsletter.reset()'/>
+            </form
+            >
           </div>
         </div>
       </div>
@@ -133,9 +137,9 @@
         <li>
           <a>recuitment</a>
         </li>
-        <li>
+        <!-- <li>
           <a>contact</a>
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="clearfix"></div>

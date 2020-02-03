@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class ClientLayoutComponent implements OnInit {
   userPro5: User = null;
+  newsletterArr: string[] = [];
+  regSuccess: boolean = false;
   //searchKw: string = '[(ngModel)]';
   constructor(private router: Router) { }
 
@@ -39,5 +41,25 @@ export class ClientLayoutComponent implements OnInit {
   SearchFilm(keyword: string) {
     keyword.trim();
     this.router.navigate([`/search-result/${keyword}`]);
+  }
+
+  NewsletterList(mail: string) {
+    console.log('email newsletter', mail)
+    if (localStorage.getItem('newsletter')) {
+      this.newsletterArr = JSON.parse(localStorage.getItem('newsletter'))
+      //this.newsletterArr = newsletterArr1;
+      this.newsletterArr.push(mail);
+      //console.log('danh sach email list', this.newsletterArr)
+      localStorage.setItem('newsletter', JSON.stringify(this.newsletterArr))
+      
+    }
+    else {
+      this.newsletterArr.push(mail);
+      localStorage.setItem('newsletter', JSON.stringify(this.newsletterArr))
+    }
+    this.regSuccess = true;
+    setTimeout(() => {
+      this.regSuccess = false;
+    }, 2000)
   }
 }

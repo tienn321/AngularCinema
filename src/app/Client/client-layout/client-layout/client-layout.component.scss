@@ -104,3 +104,29 @@
     font-size: 0.8em;
   }}
 }
+.newsletter_input{
+  position: relative;
+  .tooltip_annouce{
+  display: inline;
+  position: absolute;
+  z-index: 10;
+  left: 5%;
+  bottom: -120%;
+  background: rgba(255, 141, 27, 0.4);
+  width: fit-content;
+  padding: 5px;
+  line-height: 1.2;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  &::before{
+    display: block;
+    content: '';
+    position: absolute;
+    top: -18%;
+    left: 50%;
+    border-left: 5px solid transparent;
+    border-bottom: 5px solid rgba(255, 141, 27, 0.4);
+    border-right: 5px solid transparent;
+}}
+}

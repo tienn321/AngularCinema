@@ -1,0 +1,351 @@
+
+    <section class="panel">
+      <header class="panel-heading">
+          <ng-container >Add new Film</ng-container>
+          <ng-template #editUser>Edit Film</ng-template>
+          <span class="tools pull-right" >
+              <a style="cursor: pointer;" class="fa fa-times" (click)='CloseModal()'></a>
+              </span>
+      </header>
+      <div class="panel-body">
+        <div class=" form" *ngIf='isEditing'>
+            <form #frmUpdateFilm="ngForm" class="cmxform form-horizontal " 
+            >
+
+            <div class="col-sm-3" style="padding-left: 0;">
+              <label for="hinhAnh" class="control-label">Poster </label>
+              <!-- <div> -->
+               <input type="file" class="form-control" name="hinhAnh" #updateImg/>
+               <div class="img_display">
+                  <img [src]='filmEditInput.hinhAnh'/>
+                  <i (click)='EditThisFilm(filmRes)'
+                class="fa fa fa-edit"></i>
+              </div>
+             
+             
+              <!-- </div> -->
+            </div>
+            
+            <div class="col-sm-9">
+
+            <div class="form-group ">
+              <div class="col-sm-6 col_left">
+
+                <div class="user_check_form">
+                  <label for="tenPhim" class="control-label">Film Name <span class="required">*</span></label> 
+
+                  <div *ngIf="(tenPhim.dirty || tenPhim.touched) && tenPhim.errors"> 
+                    <i class="fa fa-long-arrow-left" style="color: red;"></i>
+                    <span *ngIf="tenPhim.errors.required" class="text-danger">
+                 This field cant be blank
+                    </span>
+                    <span *ngIf="tenPhim.errors.maxlength" class="text-danger">
+                    Not over 50 characters 
+                    </span>
+                    <i class="fa fa-thumbs-o-down"></i>
+                  </div>
+                  <div class="fade in" *ngIf="(tenPhim.dirty || tenPhim.touched) && !tenPhim.errors">
+                    <i class="fa fa-thumbs-o-up"></i>
+                  </div>  
+                </div>
+                
+                <input type="text" class="form-control" id="tenPhim" name="tenPhim" maxlength="50" type="text" required ngModel #tenPhim='ngModel' [(ngModel)]='filmEditInput.tenPhim'>
+              </div>
+
+              <div class="col-sm-6 col_right">
+                <div class="user_check_form">
+                  <label for="biDanh" class="control-label">Alias</label>
+                </div>
+
+                <input type="text" class="form-control" id="biDanh" name="biDanh"  maxlength="50" placeholder='(optional)' ngModel #biDanh='ngModel' [(ngModel)]='filmEditInput.biDanh'>
+              </div>
+            </div>
+
+
+            <div class="form-group ">
+              <!-- <div class=""> -->
+
+                <div class="user_check_form">
+                  <label for="trailer" class="control-label">Trailer <span class="required">*</span></label>
+
+                  <div class="" *ngIf="(trailer.dirty || trailer.touched) && trailer.errors"> 
+                    <i class="fa fa-long-arrow-left" style="color: red;"></i>
+                    <span *ngIf="trailer.errors.required" class="text-danger">
+                 This field cant be blank
+                    </span>
+                    <i class="fa fa-thumbs-o-down"></i>
+                  </div>
+                  <div class="fade in" *ngIf="(trailer.dirty || trailer.touched) && !trailer.errors">
+                    <i class="fa fa-thumbs-o-up"></i>
+                  </div>  
+                </div>
+                
+                <input type="text" class="form-control" id="trailer" name="trailer" required ngModel #trailer='ngModel' placeholder='embed url here' [(ngModel)]='filmEditInput.trailer'>
+              <!-- </div> -->
+
+              <!-- <div class="col-sm-6">
+                <div class="user_check_form">
+                  <label for="biDanh" class="control-label">Alias</label>
+                </div>
+
+                <input type="text" class="form-control" id="biDanh" name="biDanh"  maxlength="50" type="text" placeholder='(optional)' ngModel #biDanh='ngModel'>
+              </div> -->
+            </div>
+
+             <div class="form-group ">
+              <div class="user_check_form">
+               <label for="moTa" class="control-label">Description <span class="required">*</span></label>
+
+               <div *ngIf="(moTa.dirty || moTa.touched) && moTa.errors"> 
+                    <i class="fa fa-long-arrow-left" style="color: red;"></i>
+                    <span *ngIf="moTa.errors.required" class="text-danger">
+                 This field cant be blank
+                    </span>
+                    <span *ngIf="moTa.errors.maxlength" class="text-danger">
+                    Not over 50 characters 
+                    </span>
+                    <i class="fa fa-thumbs-o-down"></i>
+                  </div>
+                  <div class="fade in" *ngIf="(moTa.dirty || moTa.touched) && !moTa.errors">
+                    <i class="fa fa-thumbs-o-up"></i>
+                  </div>  
+
+              </div>
+              
+              <textarea class="form-control" row='3' id='moTa' name="moTa" type="text" required ngModel #moTa='ngModel' [(ngModel)]='filmEditInput.moTa'>
+
+              </textarea>
+             </div>
+
+              <div class="form-group ">
+              <div class="col-sm-6 col_left">
+
+                <div class="user_check_form">
+                  <label for="ngayKhoiChieu" class="control-label">Release date <span class="required">*</span></label>
+
+                  <div *ngIf="(ngayKhoiChieu.dirty || ngayKhoiChieu.touched) && ngayKhoiChieu.errors"> 
+                    <i class="fa fa-long-arrow-left" style="color: red;"></i>
+                    <span *ngIf="ngayKhoiChieu.errors.required" class="text-danger">
+                 This field cant be blank
+                    </span>
+                    <span *ngIf="ngayKhoiChieu.errors.maxlength" class="text-danger">
+                    Not over 50 characters 
+                    </span>
+                    <i class="fa fa-thumbs-o-down"></i>
+                  </div>
+                  <div class="fade in" *ngIf="(ngayKhoiChieu.dirty || ngayKhoiChieu.touched) && !ngayKhoiChieu.errors">
+                    <i class="fa fa-thumbs-o-up"></i>
+                  </div>  
+                </div>
+                
+                <input class="form-control" id="ngayKhoiChieu" name="ngayKhoiChieu" maxlength="50" type="text" required ngModel #ngayKhoiChieu='ngModel' [(ngModel)]='filmEditInput.ngayKhoiChieu' placeholder='dd/MM/yyyy'>
+              </div>
+
+              <div class="col-sm-6 col_right">
+                <div class="user_check_form">
+                  <label for="danhGia" class="control-label">Rating <span class="required">*</span></label>
+                  <div *ngIf="(danhGia.dirty || danhGia.touched) && danhGia.errors"> 
+                    <i class="fa fa-long-arrow-left" style="color: red;"></i>
+                    <span *ngIf="danhGia.errors.required" class="text-danger">
+                     This field cant be blank
+                    </span>
+                    <span *ngIf="danhGia.errors.maxlength" class="text-danger">
+                      Not over 50 characters 
+                    </span>
+                    <i class="fa fa-thumbs-o-down"></i>
+                  </div>
+                  <div class="fade in" *ngIf="(danhGia.dirty || danhGia.touched) && !danhGia.errors">
+                    <i class="fa fa-thumbs-o-up"></i>
+                  </div>  
+                </div>
+
+                <input type="number" class="form-control" id="danhGia" name="danhGia" ngModel #danhGia='ngModel' [(ngModel)]='filmEditInput.danhGia'>
+              </div>
+            </div>
+             
+              
+
+                    <div class="form-group ">
+                        <div class="col-sm-offset-10 col-sm-2 modal_action">
+                            <button class="btn btn-success modal_submit" type="submit" (click)='UpdateFilm(frmUpdateFilm.value,updateImg);frmUpdateFilm.reset()'>Update</button>
+                            
+                        </div>
+                    </div>
+
+                    </div>
+                </form>
+        </div>
+
+        <div class=" form" *ngIf='!isEditing'>
+            <form #frmAddFilm="ngForm" class="cmxform form-horizontal " 
+            (ngSubmit)="AddNewFilm(frmAddFilm.value,inputImg);frmAddFilm.reset()">
+
+            <div class="col-sm-3" style="padding-left: 0;">
+              <label for="hinhAnh" class="control-label">Poster <span class="required">*</span></label>
+              <!-- <div> -->
+               <input #inputImg type="file" required class="form-control" name="hinhAnh"/>
+               <!-- <div id="drop">
+                 <span class="dz-text dz-default dz-message">Drop here or click to choose</span>
+                 
+                 
+                 <a class="upload_btn"> Browse</a>
+                 <input type="file" name="hinhAnh" multiple="1" class="form-control" placeholder='here'>
+                </div> -->
+             
+             
+              <!-- </div> -->
+            </div>
+            
+            <div class="col-sm-9">
+
+            <div class="form-group ">
+              <div class="col-sm-6 col_left">
+
+                <div class="user_check_form">
+                  <label for="tenPhim" class="control-label">Film Name <span class="required">*</span></label>
+
+                  <div *ngIf="(tenPhim.dirty || tenPhim.touched) && tenPhim.errors"> 
+                    <i class="fa fa-long-arrow-left" style="color: red;"></i>
+                    <span *ngIf="tenPhim.errors.required" class="text-danger">
+                 This field cant be blank
+                    </span>
+                    <span *ngIf="tenPhim.errors.maxlength" class="text-danger">
+                    Not over 50 characters 
+                    </span>
+                    <i class="fa fa-thumbs-o-down"></i>
+                  </div>
+                  <div class="fade in" *ngIf="(tenPhim.dirty || tenPhim.touched) && !tenPhim.errors">
+                    <i class="fa fa-thumbs-o-up"></i>
+                  </div>  
+                </div>
+                
+                <input type="text" class="form-control" id="tenPhim" name="tenPhim" maxlength="50" type="text" required ngModel #tenPhim='ngModel'>
+              </div>
+
+              <div class="col-sm-6 col_right">
+                <div class="user_check_form">
+                  <label for="biDanh" class="control-label">Alias</label>
+                </div>
+
+                <input type="text" class="form-control" id="biDanh" name="biDanh"  maxlength="50" placeholder='(optional)' ngModel #biDanh='ngModel'>
+              </div>
+            </div>
+
+
+            <div class="form-group ">
+              <!-- <div class=""> -->
+
+                <div class="user_check_form">
+                  <label for="trailer" class="control-label">Trailer <span class="required">*</span></label>
+
+                  <div class="" *ngIf="(trailer.dirty || trailer.touched) && trailer.errors"> 
+                    <i class="fa fa-long-arrow-left" style="color: red;"></i>
+                    <span *ngIf="trailer.errors.required" class="text-danger">
+                 This field cant be blank
+                    </span>
+                    <i class="fa fa-thumbs-o-down"></i>
+                  </div>
+                  <div class="fade in" *ngIf="(trailer.dirty || trailer.touched) && !trailer.errors">
+                    <i class="fa fa-thumbs-o-up"></i>
+                  </div>  
+                </div>
+                
+                <input type="text" class="form-control" id="trailer" name="trailer" required ngModel #trailer='ngModel' placeholder='embed url here'>
+              <!-- </div> -->
+
+              <!-- <div class="col-sm-6">
+                <div class="user_check_form">
+                  <label for="biDanh" class="control-label">Alias</label>
+                </div>
+
+                <input type="text" class="form-control" id="biDanh" name="biDanh"  maxlength="50" type="text" placeholder='(optional)' ngModel #biDanh='ngModel'>
+              </div> -->
+            </div>
+
+             <div class="form-group ">
+              <div class="user_check_form">
+               <label for="moTa" class="control-label">Description <span class="required">*</span></label>
+
+               <div *ngIf="(moTa.dirty || moTa.touched) && moTa.errors"> 
+                    <i class="fa fa-long-arrow-left" style="color: red;"></i>
+                    <span *ngIf="moTa.errors.required" class="text-danger">
+                 This field cant be blank
+                    </span>
+                    <span *ngIf="moTa.errors.maxlength" class="text-danger">
+                    Not over 50 characters 
+                    </span>
+                    <i class="fa fa-thumbs-o-down"></i>
+                  </div>
+                  <div class="fade in" *ngIf="(moTa.dirty || moTa.touched) && !moTa.errors">
+                    <i class="fa fa-thumbs-o-up"></i>
+                  </div>  
+
+              </div>
+              
+              <textarea class="form-control" row='3' id='moTa' name="moTa" type="text" required ngModel #moTa='ngModel'>
+
+              </textarea>
+             </div>
+
+              <div class="form-group ">
+              <div class="col-sm-6 col_left">
+
+                <div class="user_check_form">
+                  <label for="ngayKhoiChieu" class="control-label">Release date <span class="required">*</span></label>
+
+                  <div *ngIf="(ngayKhoiChieu.dirty || ngayKhoiChieu.touched) && ngayKhoiChieu.errors"> 
+                    <i class="fa fa-long-arrow-left" style="color: red;"></i>
+                    <span *ngIf="ngayKhoiChieu.errors.required" class="text-danger">
+                 This field cant be blank
+                    </span>
+                    <span *ngIf="ngayKhoiChieu.errors.maxlength" class="text-danger">
+                    Not over 50 characters 
+                    </span>
+                    <i class="fa fa-thumbs-o-down"></i>
+                  </div>
+                  <div class="fade in" *ngIf="(ngayKhoiChieu.dirty || ngayKhoiChieu.touched) && !ngayKhoiChieu.errors">
+                    <i class="fa fa-thumbs-o-up"></i>
+                  </div>  
+                </div>
+                
+                <input class="form-control" id="ngayKhoiChieu" name="ngayKhoiChieu" maxlength="50" type="text" required ngModel #ngayKhoiChieu='ngModel' placeholder='dd/MM/yyyy'>
+              </div>
+
+              <div class="col-sm-6 col_right">
+                <div class="user_check_form">
+                  <label for="danhGia" class="control-label">Rating <span class="required">*</span></label>
+                  <div *ngIf="(danhGia.dirty || danhGia.touched) && danhGia.errors"> 
+                    <i class="fa fa-long-arrow-left" style="color: red;"></i>
+                    <span *ngIf="danhGia.errors.required" class="text-danger">
+                     This field cant be blank
+                    </span>
+                    <span *ngIf="danhGia.errors.maxlength" class="text-danger">
+                      Not over 50 characters 
+                    </span>
+                    <i class="fa fa-thumbs-o-down"></i>
+                  </div>
+                  <div class="fade in" *ngIf="(danhGia.dirty || danhGia.touched) && !danhGia.errors">
+                    <i class="fa fa-thumbs-o-up"></i>
+                  </div>  
+                </div>
+
+                <input type="number" class="form-control" id="danhGia" name="danhGia" ngModel #danhGia='ngModel'>
+              </div>
+            </div>
+             
+              
+
+                    <div class="form-group ">
+                        <div class="col-sm-offset-10 col-sm-2 modal_action">
+                            <button class="btn btn-info modal_submit" type="submit" >Submit</button>
+                            
+                        </div>
+                    </div>
+
+                    </div>
+                </form>
+        </div>
+
+        </div>
+
+      </section>

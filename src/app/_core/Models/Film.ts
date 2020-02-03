@@ -6,7 +6,7 @@ export class Film {
   hinhAnh: string;
   moTa: string;
   maNhom: string;
-  ngayKhoiChieu: Date;
+  ngayKhoiChieu: string;
   danhGia: number;
   constructor() { }
 }

@@ -1,16 +1,21 @@
-.showtimebycinema {
-  //height: max-content;
+.showtimebycinema { 
   margin: 50px auto;
   .bs-example {
-    height: max-content;
+    
+    
+
     ul {
       width: 100px;
       height: auto;
       padding-right: 0;
+      padding-top: 10px;
+      padding-bottom: 10px;
       border-left: solid 1px #ccc !important;
       border-right: solid 1px #ccc !important;
+      border-top: solid 1px #ccc !important;
+    border-bottom: solid 1px #ccc !important;
       margin: 0 !important ;
-      
+      height: 500px;
       li {
         width: 80px;
         height: 80px;
@@ -21,6 +26,10 @@
           width: 100%;
           height: auto;
           padding: 5px;
+          
+          .showtimes_cinema:focus,.showtimes_cinema:active{
+            background-color: #FF8D1B;
+          }
 
           .cinema_logo {
             width: 100%;
@@ -31,12 +40,34 @@
       }
     }
     .tab-content {
-    height: inherit;
+    height: 500px;
+    overflow-y: scroll;
     border-right: solid 1px #ccc !important;
+    border-top: solid 1px #ccc !important;
+    border-bottom: solid 1px #ccc !important;
+    padding-top: 10px;
+      padding-bottom: 10px;
+    &::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+  
+  }
+&::-webkit-scrollbar-thumb{
+  background-color: #F90;	
+	background-image: -webkit-linear-gradient(45deg,
+	                                          rgba(255, 255, 255, .2) 25%,
+											  transparent 25%,
+											  transparent 50%,
+											  rgba(255, 255, 255, .2) 50%,
+											  rgba(255, 255, 255, .2) 75%,
+											  transparent 75%,
+											  transparent)
+  }
+  
   }
   }
   
-  //border: solid 1px #ccc;
+ 
 
   
 }
@@ -45,3 +76,25 @@
     display: none;
   }
 }
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  background-color: #FF8D1B;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: #F5F5F5;
+}
+::-webkit-scrollbar-track {
+    //không gian trống bên dưới hướng thanh scrollbar.
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #F90;	
+	background-image: -webkit-linear-gradient(45deg,
+	                                          rgba(255, 255, 255, .2) 25%,
+											  transparent 25%,
+											  transparent 50%,
+											  rgba(255, 255, 255, .2) 50%,
+											  rgba(255, 255, 255, .2) 75%,
+											  transparent 75%,
+											  transparent)
+  }

@@ -1,8 +1,9 @@
 <li style="height: 100px;" 
   [ngClass]="{'slidey-active':indexInput === activeItem}">
+  <a style="text-decoration: none;" routerLink='/detail/{{filmInput.maPhim}}'>
           <table class="slidey-list-table">
             
-            <tbody style="cursor: pointer;" routerLink='/detail/{{filmInput.maPhim}}'>
+            <tbody style="cursor: pointer;" >
               <tr>
                 <td rowspan="2" class="slidey-list-thumbnail-container">
                   <div class="slidey-list-thumbnail slider_thumbnail">
@@ -19,4 +20,5 @@
 
             </tbody>
           </table>
+          </a>
         </li>

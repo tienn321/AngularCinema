@@ -5,7 +5,7 @@
 </div>
 <div class="col-md-8">
   <div class='filmcard_head'>
-    <a class="filmcard_title">{{cardFilm.tenPhim}}</a>
+    <a class="filmcard_title" routerLink='/detail/{{cardFilm.maPhim}}'>{{cardFilm.tenPhim}}</a>
     <div class="block-stars">
       <ul class="w3l-ratings">
         <li *ngFor='let start of ratingStarts(cardFilm.danhGia)'><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
@@ -23,7 +23,7 @@
           
           <div class="filmcard_showtimes">
             <ng-container *ngFor='let filmShowtimes2 of filmShowtimes1.lichChieuPhim;let i = index'>
-              <button class="btn" *ngIf="i < 6">
+              <button class="btn" *ngIf="i < 6" routerLink='/booking/{{filmShowtimes2.maLichChieu}}'>
               {{filmShowtimes2.ngayChieuGioChieu | date: 'hh:mm'}}
               
               </button>
